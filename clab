@@ -22,7 +22,7 @@ fi
 if [ "$PLATFORM" = "Darwin" ]; then
 xhost + 127.0.0.1
 docker run -it --rm \
-    --name monntpy-lab \
+    --name monntpy-core \
     -p 2000:22 \
     -p 51051:50051 \
     -v $SHARED:/shared \
@@ -36,7 +36,7 @@ docker run -it --rm \
 else
 xhost +local:root
 docker run -it --rm \
-    --name monntpy-lab \
+    --name monntpy-core \
     -p 2000:22 \
     -p 51051:50051 \
     -v $SHARED:/shared \
