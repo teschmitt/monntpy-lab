@@ -1,0 +1,307 @@
+#!/bin/bash
+
+fn_exists() { declare -F "$1" > /dev/null; }
+
+print_log() {
+    LOG_LEVEL=$1
+    shift
+    TS=$(date)
+    echo "$TS | $LOG_LEVEL | $@" 
+    #| tee /shared/simulation.log
+}
+
+panic() {
+    LOG_LEVEL=ERROR
+    shift
+    TS=$(date)
+    echo "$TS | $LOG_LEVEL | $@" 
+    #| tee /shared/simulation.log
+    exit -1
+}
+
+if [ "$#" -ne 1 ]
+then
+  echo "Usage: $0 <experiment config>"
+  exit 1
+fi
+
+BASEDIR=$(dirname $1)
+
+NAME=experiment
+MONITOR_PIDSTAT=0
+MONITOR_NET=0
+
+NOW=$(date +%s)
+
+CONFIG=$1
+. $CONFIG
+
+RESULTS_DIR=$BASEDIR/results-$NAME-$NOW
+
+print_log INFO Result will be put into $RESULTS_DIR
+mkdir $RESULTS_DIR || panic Could not create results directory: $RESULTS_DIR
+
+if [ ! -f "$BASEDIR/$SCENARIO" ]; then
+    panic Scenario $BASEDIR/$SCENARIO not found.	
+fi
+
+##########################################################################
+#
+# General startup
+#
+##########################################################################
+
+print_log INFO Starting $BASEDIR/$SCENARIO
+core-load-xml $BASEDIR/$SCENARIO -s
+
+if [ -f "$BASEDIR/$AUTOMATOR" ]; then
+    print_log INFO Setting initial core-automator positions from $BASEDIR/$AUTOMATOR
+    core-automator.py -f $BASEDIR/$AUTOMATOR -i -c 1
+fi
+
+if [ $GUI = 1 ]; then
+    print_log INFO Attaching gui to session
+    core-pygui -s 1 &
+fi
+
+if fn_exists pre ; then
+    print_log INFO Found pre hook, executing it now...
+    pre
+fi
+
+##########################################################################
+#
+# START simulation
+#
+##########################################################################
+
+
+if [ -n "$START_EXEC" ]; then
+    for CMD in "${START_EXEC[@]}"; do
+        print_log INFO Executing \"$CMD\" on all nodes
+        cea "$CMD"
+    done
+fi
+
+if [ -n "$START_DAEMONIZED" ]; then
+    for CMD in "${START_DAEMONIZED[@]}"; do
+        print_log INFO Daemonizing \"$CMD\" on all nodes
+        cda "$CMD"
+    done    
+fi
+
+if [ -n "$WARMUP" ]; then
+    print_log INFO Warming up for $WARMUP seconds
+    sleep $WARMUP
+fi
+
+##########################################################################
+#
+# Monitoring
+#
+##########################################################################
+
+
+print_log INFO Starting monitoring services
+
+if [ $MONITOR_PIDSTAT = 1 ]; then
+    PARAMS=""
+    if [ -n "$MONITOR_PIDSTAT_PARAMS" ]; then
+        PARAMS=$MONITOR_PIDSTAT_PARAMS
+    fi
+    print_log INFO Starting pidstat monitor.. $PARAMS
+    cda monitor-pidstat $PARAMS
+fi
+
+if [ $MONITOR_NET = 1 ]; then
+    PARAMS=""
+    if [ -n "$MONITOR_NET_PARAMS" ]; then
+        PARAMS=$MONITOR_NET_PARAMS
+    fi
+    print_log INFO Starting net monitor.. $PARAMS
+    cda monitor-net $PARAMS
+fi
+
+if [ $MONITOR_CONTACTS = 1 ]; then
+    PARAMS=""
+    if [ -n "$MONITOR_CONTACTS_PARAMS" ]; then
+        PARAMS=$MONITOR_CONTACTS_PARAMS
+    fi
+    print_log INFO Starting contacts monitor.. $PARAMS
+    monitor-contacts $PARAMS > $RESULTS_DIR/contacts.log &
+fi
+
+if [ $MONITOR_XY = 1 ]; then
+    PARAMS=""
+    if [ -n "$MONITOR_XY_PARAMS" ]; then
+        PARAMS=$MONITOR_XY_PARAMS
+    fi
+    print_log INFO Starting xy position monitor.. $PARAMS
+    monitor-xy $PARAMS > $RESULTS_DIR/xy.log &
+fi
+
+##########################################################################
+#
+# ALL SYSTEMS RUNNING
+#
+##########################################################################
+
+if [ -f "$BASEDIR/$AUTOMATOR" ]; then
+    print_log INFO Running core-automator with $BASEDIR/$AUTOMATOR
+    core-automator.py -f $BASEDIR/$AUTOMATOR -l -c 1 2>&1 > $RESULTS_DIR/core-automator.log &
+fi
+
+START_TIME=$(date +%s)
+cea "touch started.txt"
+print_log INFO Experiment started: $START_TIME
+echo $START_TIME > $RESULTS_DIR/start.txt
+
+if fn_exists start ; then
+    print_log INFO Found start hook, executing it now...
+    start $RESULTS_DIR
+fi
+
+##########################################################################
+#
+# STOP simulation
+#
+##########################################################################
+
+if [ -n "$RUNTIME" ]; then
+    print_log INFO Experiment will run for $RUNTIME seconds
+    sleep $RUNTIME
+else
+    print_log INFO Experiment will run until stopped through /shared/shutdown.txt
+    while [ ! -f /shared/shutdown.txt ]
+    do
+        sleep 1
+    done 
+    print_log INFO Got shutdown signal!
+    rm /shared/shutdown.txt
+fi
+
+STOP_TIME=$(date +%s)
+print_log INFO Experiment finished: $STOP_TIME
+echo $STOP_TIME > $RESULTS_DIR/stop.txt
+
+if [ -f "$BASEDIR/$AUTOMATOR" ]; then
+    print_log INFO Stopping core-automator
+    killall core-automator.py
+fi
+
+if [ -n "$SHUTDOWN_PROCS" ]; then
+    print_log INFO Stopping user services: $SHUTDOWN_PROCS
+    killall $SHUTDOWN_PROCS 2>&1 > /dev/null
+fi
+
+print_log INFO Stopping monitoring services 
+killall bwm-ng pidstat monitor-contacts monitor-xy 2>&1 > /dev/null
+
+##########################################################################
+#
+# COLLECT data
+#
+##########################################################################
+
+print_log INFO Collecting *.log from all nodes 
+
+if fn_exists post ; then
+    print_log INFO Found post hook, executing it now...
+    post $RESULTS_DIR
+fi
+
+if [ $MONITOR_PIDSTAT = 1 ]; then
+    print_log INFO Preprocessing pidstat logs
+    cea 'cat pidstat-$(hostname).log | grep "^# " | head -n1 | cut -c 3- > pidstat-$(hostname).csv.log && cat pidstat-$(hostname).log | grep "^1" >> pidstat-$(hostname).csv.log'
+fi
+
+print_log INFO Collecting data 
+for i in $(fdfind .log /tmp/pycore.1/*.conf )
+do         
+    NODE_NAME=$(echo $i | cut -d "/" -f 4- | cut -d "." -f 1)
+
+
+    print_log INFO Copying $i to $RESULTS_DIR/$NODE_NAME
+    if [ ! -d "$RESULTS_DIR/$NODE_NAME" ]; then
+        mkdir $RESULTS_DIR/$NODE_NAME
+    fi
+    cp $i $RESULTS_DIR/$NODE_NAME
+done
+
+for i in /tmp/pycore.1/*.conf
+do
+  NODE_NAME=$(echo $i | cut -d "/" -f 4- | cut -d "." -f 1)
+  print_log INFO Gathering file stats for node $NODE_NAME  
+  find $i/ | cut -d "/" -f 4- > $RESULTS_DIR/$NODE_NAME/filelist.txt
+done
+
+##########################################################################
+#
+# ANALYZE results
+#
+##########################################################################
+
+if fn_exists analyze ; then
+    print_log INFO Found analyze hook, executing it now...
+    analyze $RESULTS_DIR
+fi
+
+print_log INFO Analyzing data 
+if [ $MONITOR_PIDSTAT = 1 ]; then
+    if [ -n "$MONITOR_PIDSTAT_PARAMS" ]; then
+        print_log INFO Plotting pidstat logs
+        plot-pidstat.py $RESULTS_DIR RSS $MONITOR_PIDSTAT_PARAMS "Size in MB" "Nodes"
+        plot-pidstat.py $RESULTS_DIR VSZ $MONITOR_PIDSTAT_PARAMS "Size in MB" "Nodes"
+        plot-pidstat.py $RESULTS_DIR '%CPU' $MONITOR_PIDSTAT_PARAMS "CPU usage" "Nodes"
+    fi
+fi
+
+if [ $MONITOR_NET = 1 ]; then
+    print_log INFO Plotting net logs
+    NET_IFACE='total'
+    if [ -n "$MONITOR_NET_PARAMS" ]; then
+        NET_IFACE="$MONITOR_NET_PARAMS"
+    fi
+    plot-net-graph.py $RESULTS_DIR 'bytes_total/s' $NET_IFACE
+    plot-net-graph.py $RESULTS_DIR 'bytes_out/s' $NET_IFACE
+    plot-net-graph.py $RESULTS_DIR 'bytes_in/s' $NET_IFACE
+fi
+
+if [ $MONITOR_XY = 1 ]; then
+    print_log INFO Plotting xy position log    
+    plot-xy.py $RESULTS_DIR
+fi
+
+print_log INFO Analyzing file stats
+
+for i in $RESULTS_DIR/*/filelist.txt
+do
+  NODE_NAME=$(echo $i | cut -d "/" -f 4)    
+  echo $NODE_NAME $(cat $i | wc -l) >> $RESULTS_DIR/filecount.csv  
+done
+
+if [ $(find $RESULTS_DIR  | egrep 'nohup.periodic-file-generator.*.log' | wc -l ) -ne 0 ]; then
+    for i in $RESULTS_DIR/*/nohup.periodic-file-generator.*.log
+    do
+        NODE_NAME=$(echo $i | cut -d "/" -f 4)    
+        echo $NODE_NAME $(cat $i | wc -l) >> $RESULTS_DIR/periodic-files-generated.csv  
+    done
+fi
+
+if [ $MONITOR_CONTACTS = 1 ]; then
+    print_log INFO Plotting contact data
+    plot-contacts.py $RESULTS_DIR time
+    plot-contacts.py $RESULTS_DIR node
+fi
+
+##########################################################################
+#
+# AFTER
+#
+##########################################################################
+
+
+print_log INFO Deleting session
+core-cli session -i 1 delete
+
+cp $BASEDIR/experiment.log $RESULTS_DIR
