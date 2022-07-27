@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rsync -aPz /home/thomas/thesis/moNNT.py .
-rsync -aPz /home/thomas/thesis/py-dtn7 .
+rsync -aPz --exclude '*.pyc' /home/thomas/thesis/moNNT.py .
+rsync -aPz --exclude '*.pyc' /home/thomas/thesis/py-dtn7 .
 
 docker build --rm --tag monntpy-eval .
