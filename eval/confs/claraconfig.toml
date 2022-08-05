@@ -1,0 +1,26 @@
+[dtnd]
+host = "http://10.0.0.12"
+port = 3000
+
+node_id = ""
+rest_path = ""
+ws_path = "/ws"
+multi_user = false
+
+[backoff]
+initial_wait = 0.1
+max_retries = 20
+reconn_pause = 300
+constant_wait = 0.75
+
+[bundles]
+lifetime = 86400000
+deliv_notification = false
+
+[usenet]
+email = "clara@posteo.de"
+newsgroups = [
+    "germany.hessen.darmstadt.darmstadt",
+    "germany.hessen.darmstadt-dieburg.dieburg",
+    "germany.hessen.darmstadt-dieburg.rossdorf"
+]
