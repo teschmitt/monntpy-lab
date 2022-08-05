@@ -1,5 +1,5 @@
 [dtnd]
-host = "http://10.0.0.12"
+host = "http://127.0.0.1"
 port = 3000
 
 node_id = ""

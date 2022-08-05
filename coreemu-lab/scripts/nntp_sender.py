@@ -1,14 +1,30 @@
 #!/usr/bin/python3 -u
 
-
-import nntplib
 import logging
+import nntplib
 import subprocess
+import sys
 import time
 
 
-TESTING_GROUP = "eval.core.monntpy"
-INTERVAL = 10
+# if argujments are not given, use default values
+if len(sys.argv) < 3:
+    print("Usage: nntp_sender.py <SERVER IP> <EMAIL> [<INTERVAL>]")
+    sys.exit(1)
+if len(sys.argv) > 3:
+    INTERVAL = int(sys.argv[3])
+else:
+    INTERVAL = 10
+
+print(f"Args: {sys.argv}")
+
+server_ip = sys.argv[1]
+email_address = sys.argv[2]
+print(f"IP:     {server_ip}")
+print(f"E-Mail: {email_address}")
+
+TESTING_GROUP = "germany.hessen.darmstadt-dieburg.dieburg"
+
 
 MSG_BODY = """
 Corrupti commodi consequuntur fugiat corporis atque eaque,
@@ -30,16 +46,14 @@ veritatis asperiores atque blanditiis?
 """
 
 
-server = nntplib.NNTP(host="127.0.0.1", port=1190)
-nodeid = subprocess.run(["dtnquery", "nodeid"], stdout=subprocess.PIPE).stdout.decode().split("/")[-2]
-print(f"Got node ID: {nodeid}")
+server = nntplib.NNTP(host=server_ip, port=1190)
 
 num = 1
 
 article_template = [
-    f"From: Gene Roddenberry <e.w.roddenberry@{nodeid}>",
+    f"From: {email_address}",
     "Subject: ",
-    "Newsgroups: eval.core.monntpy",
+    f"Newsgroups: {TESTING_GROUP}",
     "MIME-Version: 1.0",
     "User-Agent: Full Monty v0.1",
     "Content-Type: text/plain; ",
@@ -52,7 +66,7 @@ while True:
     time.sleep(INTERVAL)
     full_article = []
     full_article.extend(article_template)
-    full_article[1] = f"{full_article[1]} Article {num} from node {nodeid}"
+    full_article[1] = f"{full_article[1]} Article {num} from node {sys.argv[3]}"
 
     full_article.append(MSG_BODY)
 

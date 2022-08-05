@@ -46,9 +46,9 @@ RUN poetry install --no-interaction --no-ansi --no-root --no-dev
 # exchange the entryPoint script which starts the new Python GUI
 COPY scripts/entryPoint.sh /root/entryPoint.sh
 
-# starter script for the NNTP server
-RUN pwd
+# starter scripts for the NNTP server and client
 COPY scripts/start-monntpy.sh /usr/bin
+COPY scripts/nntp_sender.py /usr/bin
 
 EXPOSE 22
 EXPOSE 5901
