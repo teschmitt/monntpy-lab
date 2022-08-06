@@ -1,4 +1,5 @@
-examples/*/results-*/
+*/results-*/
+experiment.log
 
 */moNNT.py/
 */py-dtn7/
