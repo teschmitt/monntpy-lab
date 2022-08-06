@@ -1,46 +1,46 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<scenario name="/tmp/tmp2dxw_9u6">
+<scenario name="/tmp/tmpnqxhx1hk">
   <networks>
     <network id="1" name="wlan1" icon="" canvas="0" type="WIRELESS_LAN">
-      <position x="340.0" y="74.0" lat="47.57849377321827" lon="-122.12774281080098" alt="2.0"/>
+      <position x="135.0" y="132.0" lat="47.57796656353088" lon="-122.13050513029964" alt="2.0"/>
     </network>
   </networks>
   <devices>
     <device id="2" name="alicenode" icon="" canvas="0" type="host" class="" image="">
-      <position x="266.0" y="232.0" lat="47.57705756884447" lon="-122.12873994076634" alt="2.0"/>
+      <position x="239.0" y="302.0" lat="47.57642126317443" lon="-122.12910375845642" alt="2.0"/>
       <services>
         <service name="DefaultRoute"/>
         <service name="SSH"/>
       </services>
     </device>
     <device id="3" name="bobnode" icon="" canvas="0" type="host" class="" image="">
-      <position x="514.0" y="228.0" lat="47.57709392893491" lon="-122.12539820790943" alt="2.0"/>
+      <position x="328.0" y="203.0" lat="47.57732117892816" lon="-122.12790450755212" alt="2.0"/>
       <services>
         <service name="DefaultRoute"/>
         <service name="SSH"/>
       </services>
     </device>
     <device id="4" name="claranode" icon="" canvas="0" type="host" class="" image="">
-      <position x="380.0" y="439.0" lat="47.57517589970096" lon="-122.1272038216305" alt="2.0"/>
+      <position x="386.0" y="301.0" lat="47.576430353309874" lon="-122.12712297325493" alt="2.0"/>
       <services>
         <service name="DefaultRoute"/>
         <service name="SSH"/>
       </services>
     </device>
     <device id="5" name="alicephone" icon="" canvas="0" type="PC" class="" image="">
-      <position x="122.0" y="227.0" lat="47.57710301895358" lon="-122.13068030178003" alt="2.0"/>
+      <position x="187.0" y="348.0" lat="47.57600311523809" lon="-122.12980444437801" alt="2.0"/>
       <services>
         <service name="DefaultRoute"/>
       </services>
     </device>
     <device id="6" name="bobphone" icon="" canvas="0" type="PC" class="" image="">
-      <position x="644.0" y="216.0" lat="47.57720300905476" lon="-122.12364649310538" alt="2.0"/>
+      <position x="359.0" y="142.0" lat="47.57787566477237" lon="-122.12748679094499" alt="2.0"/>
       <services>
         <service name="DefaultRoute"/>
       </services>
     </device>
     <device id="7" name="claraphone" icon="" canvas="0" type="PC" class="" image="">
-      <position x="391.0" y="592.0" lat="47.57378505730837" lon="-122.12705559960862" alt="2.0"/>
+      <position x="470.0" y="277.0" lat="47.57664851608711" lon="-122.12599109599694" alt="2.0"/>
       <services>
         <service name="DefaultRoute"/>
       </services>
@@ -68,7 +68,7 @@
   </links>
   <mobility_configurations>
     <mobility_configuration node="1" model="basic_range">
-      <configuration name="range" value="275"/>
+      <configuration name="range" value="150"/>
       <configuration name="bandwidth" value="54000000"/>
       <configuration name="jitter" value="0"/>
       <configuration name="delay" value="20000"/>
@@ -102,10 +102,10 @@
     <configuration name="ovs" value="0"/>
   </session_options>
   <session_metadata>
-    <configuration name="canvas" value="{&quot;gridlines&quot;: true, &quot;dimensions&quot;: [2000, 2000], &quot;canvases&quot;: [{&quot;id&quot;: 1, &quot;wallpaper&quot;: null, &quot;wallpaper_style&quot;: 1, &quot;fit_image&quot;: false}]}"/>
-    <configuration name="edges" value="[]"/>
     <configuration name="shapes" value="[]"/>
     <configuration name="hidden" value="[]"/>
+    <configuration name="canvas" value="{&quot;gridlines&quot;: true, &quot;dimensions&quot;: [2000, 2000], &quot;canvases&quot;: [{&quot;id&quot;: 1, &quot;wallpaper&quot;: null, &quot;wallpaper_style&quot;: 1, &quot;fit_image&quot;: false}]}"/>
+    <configuration name="edges" value="[]"/>
   </session_metadata>
   <default_services>
     <node type="mdr">
