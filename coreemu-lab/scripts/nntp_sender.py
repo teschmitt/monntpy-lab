@@ -4,6 +4,7 @@ import logging
 import nntplib
 import subprocess
 import sys
+import socket
 import time
 
 
@@ -66,7 +67,7 @@ while True:
     time.sleep(INTERVAL)
     full_article = []
     full_article.extend(article_template)
-    full_article[1] = f"{full_article[1]} Article {num} from node {sys.argv[3]}"
+    full_article[1] = f"{full_article[1]} Article {num} from host {socket.gethostname()}"
 
     full_article.append(MSG_BODY)
 
