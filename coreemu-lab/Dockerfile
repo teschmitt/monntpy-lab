@@ -43,14 +43,13 @@ RUN poetry install --no-interaction --no-ansi --no-root --no-dev
 
 # -----------------------------------------------------------------------------
 
+COPY bin/* /usr/local/bin/
+
 # exchange a few scripts
 COPY scripts/entryPoint.sh      /root/entryPoint.sh
-COPY scripts/plot-pidstat.py    /usr/local/bin
 
 # starter scripts and config for the NNTP server and client
-COPY scripts/start-monntpy.sh   /usr/local/bin
-COPY scripts/nntp_sender.py     /usr/local/bin
-COPY scripts/config.py          /app/moNNT.py/backend/dtn7sqlite/config.py
+COPY modified/config.py          /app/moNNT.py/backend/dtn7sqlite/config.py
 
 EXPOSE 22
 EXPOSE 5901
