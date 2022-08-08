@@ -12,6 +12,9 @@ LABEL Description="Docker image for evaluating moNNT.py NNTP Server using core n
 
 
 ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && \
+    apt-get install -y bc && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /usr/local/bin/* /usr/local/bin/
 # COPY bin/* /usr/local/bin/

@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# if no arguments given exit
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <interval>"
+    exit 1
+fi
+
+DELAY=$1
+RX_PREFIX=$2
+TX_PREFIX=$3
+
+echo "# time\tcreated\tdelivered\tdelivered/created"
+
+TIME=0
+# loop while file does not exist
+while [ ! -f /shared/shutdown.txt ]; do
+    sleep $DELAY
+    TIME=$(($TIME + $DELAY))
+    RX=$(rg --no-filename 'Received bundle for local delivery' /tmp/pycore.1/*/*dtnd*.log | wc -l)	
+	TX=$(rg --no-filename 'Transmission of bundle requested' /tmp/pycore.1/*/*dtnd*.log | wc -l)
+    # check if TX is zero
+    if [ $TX -eq 0 ]; then
+        RATE=0
+    else        
+        RATE=$(echo "scale=4; x=$RX / $TX ; if(x<1) print 0; x" | bc)
+    fi
+    echo "$TIME.0000 $TX $RX $RATE"
+done

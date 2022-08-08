@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# if no arguments given exit
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <delay> <receiver_suffix> <sender_sufix>"
+    exit 1
+fi
+
+DELAY=$1
+RX_SUFFIX=$2
+TX_SUFFIX=$3
+
+echo "# time\tcreated\tdelivered\tdelivered/created"
+
+TIME=0
+# loop while file does not exist
+while [ ! -f /shared/shutdown.txt ]; do
+    sleep $DELAY
+    TIME=$(($TIME + $DELAY))
+    RX=$(rg 'Received new bundle' /tmp/pycore.1/*$RX_SUFFIX/ | wc -l)
+	TX=$(rg ' : ' /tmp/pycore.1/*$TX_SUFFIX/ | wc -l)
+    # check if TX is zero
+    if [ $TX -eq 0 ]; then
+        RATE=0
+    else        
+        RATE=$(echo "scale=4; x=$RX / $TX ; if(x<1) print 0; x" | bc)
+    fi
+    echo "$TIME.0000 $TX $RX $RATE"
+done
