@@ -31,18 +31,18 @@ ENV USER root
 
 RUN pip install poetry==1.1.13
 
-RUN mkdir -p /app/moNNT.py && mkdir -p /app/py-dtn7
-
 # following commands rely on a moNNT.py installation copied to the current
 # build environment
 COPY ./moNNT.py/ /app/moNNT.py
-COPY ./py-dtn7/ /app/py-dtn7
+
 # it is probably wise to substitute the above two lines with a git clone
 # once the py-dtn7 package is fetched from PyPI instead of the local dev
 # copy
 WORKDIR /app/moNNT.py
 RUN poetry install --no-interaction --no-ansi --no-root --no-dev
 
+RUN mkdir -p /app/moNNT.py && mkdir /app/modified
+COPY ./modified/* /app/modified/
 
 # -----------------------------------------------------------------------------
 
@@ -50,9 +50,6 @@ COPY bin/* /usr/local/bin/
 
 # exchange a few scripts
 COPY scripts/entryPoint.sh      /root/entryPoint.sh
-
-# starter scripts and config for the NNTP server and client
-COPY modified/config.py          /app/moNNT.py/backend/dtn7sqlite/config.py
 
 EXPOSE 22
 EXPOSE 5901

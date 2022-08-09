@@ -1,6 +1,7 @@
 from logging import Logger
 from pathlib import Path
 import os
+import subprocess
 
 from toml import load
 
@@ -9,27 +10,21 @@ from logger import global_logger
 logger: Logger = global_logger()
 
 
-##################### Special variables for running this in CORE Emu Lab:
+"""
+For running this in CORE Emu Lab, we need to change some of moNNT.py's configuration
+This enables us to load a standard config.toml into the applications working path
+and then substitute some elements with dynamically generated values that are taken
+from the environment or passed to start-monttpy.sh
+
+"""
 
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL')
-# NODE_ID = os.environ.get('NODE_ID')
+SESSION_DIR = os.environ.get('SESSION_DIR')
+HOSTNAME = subprocess.run(["hostname"], stdout=subprocess.PIPE).stdout.decode().strip()
 
-#########################################################################
 
+toml_path: str = str(Path(__file__).resolve().parent / "config.toml")
+config = load(toml_path)
 
-try:
-    toml_path: str = str(Path(__file__).resolve().parent / "config.toml")
-    config = load(toml_path)
-
-    config["usenet"]["email"] = SENDER_EMAIL
-except FileNotFoundError:
-    logger.error("File 'config.toml' not found in backend root directory. Using defaults.")
-    config = {
-        "dtnd": {
-            "host": "http://127.0.0.1",
-            "port": 3000,
-            "rest_path": "",
-            "ws_path": "/ws",
-        },
-        "bundles": {"lifetime": "86400000", "deliv_notification": "false"},
-    }
+config["usenet"]["email"] = SENDER_EMAIL
+config["backend"]["db_url"] = f"sqlite://{SESSION_DIR}/{HOSTNAME}.conf/db.sqlite3"
