@@ -1,5 +1,6 @@
 results-*/
 experiment.log
+logs/
 
-*/moNNT.py/
-*/py-dtn7/
+moNNT.py/
+py-dtn7/
