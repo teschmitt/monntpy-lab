@@ -13,9 +13,9 @@ if len(sys.argv) < 3:
     print("Usage: nntp_sender.py <SERVER IP> <EMAIL> [<INTERVAL>]")
     sys.exit(1)
 if len(sys.argv) > 3:
-    INTERVAL = int(sys.argv[3])
+    INTERVAL = float(sys.argv[3])
 else:
-    INTERVAL = 10
+    INTERVAL = 5.0
 
 print(f"Args: {sys.argv}")
 

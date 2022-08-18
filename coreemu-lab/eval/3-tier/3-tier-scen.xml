@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<scenario name="/tmp/tmpnqxhx1hk">
+<scenario name="/tmp/tmpdz0e4pjr">
   <networks>
     <network id="1" name="wlan1" icon="" canvas="0" type="WIRELESS_LAN">
       <position x="135.0" y="132.0" lat="47.57796656353088" lon="-122.13050513029964" alt="2.0"/>
@@ -9,22 +9,22 @@
     <device id="2" name="alicenode" icon="" canvas="0" type="host" class="" image="">
       <position x="239.0" y="302.0" lat="47.57642126317443" lon="-122.12910375845642" alt="2.0"/>
       <services>
-        <service name="DefaultRoute"/>
         <service name="SSH"/>
+        <service name="DefaultRoute"/>
       </services>
     </device>
     <device id="3" name="bobnode" icon="" canvas="0" type="host" class="" image="">
       <position x="328.0" y="203.0" lat="47.57732117892816" lon="-122.12790450755212" alt="2.0"/>
       <services>
-        <service name="DefaultRoute"/>
         <service name="SSH"/>
+        <service name="DefaultRoute"/>
       </services>
     </device>
     <device id="4" name="claranode" icon="" canvas="0" type="host" class="" image="">
       <position x="386.0" y="301.0" lat="47.576430353309874" lon="-122.12712297325493" alt="2.0"/>
       <services>
-        <service name="DefaultRoute"/>
         <service name="SSH"/>
+        <service name="DefaultRoute"/>
       </services>
     </device>
     <device id="5" name="alicephone" icon="" canvas="0" type="PC" class="" image="">
@@ -40,7 +40,7 @@
       </services>
     </device>
     <device id="7" name="claraphone" icon="" canvas="0" type="PC" class="" image="">
-      <position x="470.0" y="277.0" lat="47.57664851608711" lon="-122.12599109599694" alt="2.0"/>
+      <position x="451.0" y="313.0" lat="47.5763212715804" lon="-122.1262471158529" alt="2.0"/>
       <services>
         <service name="DefaultRoute"/>
       </services>
@@ -63,7 +63,7 @@
       <iface2 id="0" name="eth0" mac="00:00:00:aa:00:00" ip4="10.0.0.21" ip4_mask="24" ip6="2001::15" ip6_mask="128"/>
     </link>
     <link node1="1" node2="7">
-      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:01" ip4="10.0.0.22" ip4_mask="32" ip6="2001::16" ip6_mask="128"/>
+      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:01" ip4="10.0.0.22" ip4_mask="24" ip6="2001::16" ip6_mask="128"/>
     </link>
   </links>
   <mobility_configurations>
