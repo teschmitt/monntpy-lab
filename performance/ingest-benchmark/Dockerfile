@@ -15,11 +15,13 @@ RUN apt-get update                          && \
     rm -rf /var/lib/apt/lists/*             && \
     pip install poetry==1.1.13              && \
     mkdir -p /app/moNNT.py                  && \
+    # mkdir /app/py_dtn7                      && \
     mkdir /shared
 
 WORKDIR /app/moNNT.py
 # RUN git clone https://github.com/teschmitt/moNNT.py.git . && \   <-- reinstate this someday
 COPY ./moNNT.py/ /app/moNNT.py
+# COPY ./py-dtn7/ /app/py-dtn7
 RUN rm db.sqlite3* && \
     poetry config virtualenvs.create false && \
     poetry install --no-interaction --no-ansi --no-root --no-dev

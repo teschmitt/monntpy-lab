@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# define how many articles to queue in the dtnd store and how many updates
+# to show while filling the store
 send_msgs=20000
 tty_output_num=10
 if [ -n "$1" ]; then
@@ -8,22 +10,26 @@ if [ -n "$1" ]; then
 fi
 part=$(echo "$send_msgs / $tty_output_num" | bc)
 
+# some settings for the dtnd
+# these must be coordinated with the settings in monntpy-config.py
 node_name="monntpyeval"
 mail_endpoint="mail/tu-darmstadt.de/monntpy"
 group_name="monntpy.eval"
 
+# define log output locations
 ts=$(date +%s)
 logs_dir="/shared/logs"
 dtd_log_path="$logs_dir/dtnd-$ts.log"
 monntpy_log_path="$logs_dir/monntpy-$ts.log"
 
-echo "moNNT.py performance testing -- Ingestion benchmark"
-echo "--------------------------------------------------------------------------------"
-echo "This benchmark will load the store of the DTN daemon with a certain number of"
-echo "prepared articles, then start the moNNT.py server and benchmark the time it"
-echo "takes the server to ingest all relevant articles from the DTNd."
-echo "--------------------------------------------------------------------------------"
-
+cat << EOF
+moNNT.py performance testing -- Ingestion benchmark"
+--------------------------------------------------------------------------------"
+This benchmark will load the store of the DTN daemon with a certain number of"
+prepared articles, then start the moNNT.py server and benchmark the time it"
+takes the server to ingest all relevant articles from the DTNd."
+--------------------------------------------------------------------------------"
+EOF
 
 echo "Starting DTN daemon with following args:"
 cat << EOF
@@ -34,6 +40,7 @@ dtnd --nodeid   $node_name \\
 
 EOF
 
+# start the dtnd with the defined settings
 nohup dtnd --nodeid "$node_name" \
            --cla mtcp \
            --endpoint "$mail_endpoint" \
@@ -41,20 +48,21 @@ nohup dtnd --nodeid "$node_name" \
 
 sleep 1
 
-echo "Sending ..."
+
+echo "Sending articles to DTNd store ..."
 for i in $(seq 1 $send_msgs); do
     if [ $(echo "$i % $part" | bc) = "0" ]; then echo "  -> Sending message nr. $i"; fi
     dtnsend --sender "dtn://$node_name/$mail_endpoint" \
             --receiver "dtn://$group_name/~news" \
             /shared/ingest.cbor > /dev/null 2>&1
 done
-time_diff=$(echo "$(date +%s) - $ts" | bc)
-echo "Finished filling $send_msgs messages into dtnd in $time_diff seconds."
+echo "Finished filling $send_msgs messages into dtnd in $(echo "$(date +%s) - $ts" | bc) seconds."
 
 echo
 echo "Starting moNNT.py NNTP server to fetch the articles"
 cd /app/moNNT.py
-nohup ./main.py > "$monntpy_log_path" 2>&1 &
+# nohup ./main.py > "$monntpy_log_path" 2>&1 &
+./main.py
 
 echo "Waiting for all messages to be ingested..."
 status=$(rg "Created new newsgroup article" "$monntpy_log_path" | wc -l)
@@ -66,13 +74,13 @@ done
 echo "  -> Done!"
 
 
-first_entry=$(rg --max-count 1 --no-line-number "Created new newsgroup article" "$monntpy_log_path")
+first_entry=$(rg --max-count 1 --no-line-number "Ingesting all newsgroup bundles in DTNd bundle store" "$monntpy_log_path")
 last_entry=$(rg --no-line-number "Created new newsgroup article" "$monntpy_log_path" | tail -n 1)
 start_time=$(echo $first_entry | cut -d ' ' -f 1-2)
 stop_time=$(echo $last_entry | cut -d ' ' -f 1-2)
 start_sec=$(date -d "$start_time" +"%s.%N")
 stop_sec=$(date -d "$stop_time" +"%s.%N")
-elapsed=$(echo "$stop_sec - $start_sec" | bc)
+elapsed=$(echo "scale=3; $stop_sec - $start_sec" | bc -l)
 num_articles=$(rg --count "Created new newsgroup article" "$monntpy_log_path")
 msgs_per_sec=$(echo "scale=3; $num_articles / $elapsed" | bc -l)
 
