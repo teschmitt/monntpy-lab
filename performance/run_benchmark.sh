@@ -72,7 +72,7 @@ status=$(rg "Created new newsgroup article" "$monntpy_log_path" | wc -l)
 echo "timestamp,articles" > "$logs_dir/articles-ingested-$ts.csv"
 echo "0.0,$status" >> "$logs_dir/articles-ingested-$ts.csv"
 while [ "$status" -lt "$send_msgs" ]; do
-    sleep 0.2
+    sleep 0.1
     status=$(rg "Created new newsgroup article" "$monntpy_log_path" | wc -l)
     diff=$(echo "scale=3; $(date +%s.%N) - $exact_ts" | bc -l)
     echo "$diff,$status" >> "$logs_dir/articles-ingested-$ts.csv"
@@ -101,8 +101,8 @@ echo "       Total: $msgs_per_sec msgs/sec"
 echo "--------------------------------------------------------------------------------"
 
 echo
-echo "  -> dtnd output saved to: dtnd-$ts.log"
-echo "  -> moNNT.py output saved to: monntpy-$ts.log"
+echo "  -> dtnd output saved to: $dtd_log_path"
+echo "  -> moNNT.py output saved to: $monntpy_log_path"
 
 echo "  -> Cleaning up ..."
 echo "    -> stopping dtnd"
