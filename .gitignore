@@ -1,6 +1,7 @@
 results-*/
 experiment.log
 logs/
+db.sqlite*
 
 moNNT.py/
 py-dtn7/

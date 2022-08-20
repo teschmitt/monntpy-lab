@@ -2,7 +2,7 @@
 
 # define how many articles to queue in the dtnd store and how many updates
 # to show while filling the store
-send_msgs=5000
+send_msgs=1000
 tty_output_num=10
 if [ -n "$1" ]; then
     # if there is a number provided, change numer of messages to that number
@@ -21,10 +21,16 @@ ts=$(date +%s)
 logs_dir="/shared/logs"
 dtd_ingest_log_path="$logs_dir/dtnd-ingest-$ts.log"
 monntpy_ingest_log_path="$logs_dir/monntpy-ingest-$ts.log"
-dtd_spool_log_path="$logs_dir/dtnd-spool-$ts.log"
+dtnd_spool_log_path="$logs_dir/dtnd-spool-$ts.log"
 monntpy_spool_log_path="$logs_dir/monntpy-spool-$ts.log"
 
+
+
+
 # ----------------------------------------------- Start ingestion benchmark -----------------------------------------------
+
+
+
 
 LINE 25:
 
@@ -103,7 +109,7 @@ echo "  Articles ingested: $num_articles"
 echo "  Start time: $start_time"
 echo "   Stop time: $stop_time"
 echo "     Elapsed: $elapsed secs"
-echo "       Total: $msgs_per_sec msgs/sec"
+echo "        Rate: $msgs_per_sec msgs/sec"
 echo "--------------------------------------------------------------------------------"
 
 echo
@@ -116,7 +122,13 @@ kill $dtnd_pid
 echo "    -> stopping moNNT.py"
 kill $monntpy_pid
 
+
+
+
 # ------------------------------------------------- Start spool benchmark -------------------------------------------------
+
+
+
 
 cat << EOF
 
@@ -129,9 +141,7 @@ takes the server to offload all spooled articles to the DTNd.
 --------------------------------------------------------------------------------
 EOF
 
-echo "Python: $(which python)"
-echo "Python3: $(which python3)"
-echo "Starting moNNT.py NNTP server to load the spool"
+echo "Starting moNNT.py NNTP server to load the spool with $send_msgs articles"
 cd /app/moNNT.py
 nohup ./main.py > "$monntpy_spool_log_path" 2>&1 &
 monntpy_pid=$!
@@ -139,16 +149,90 @@ monntpy_pid=$!
 sleep 1 # let moNNT.py come online
 
 cd /app
-./spool.py 2000
+spool_ts=$(date +%s)
+./spool.py $send_msgs
+echo "Finished filling $send_msgs articles into spool in $(echo "$(date +%s) - $spool_ts" | bc) seconds."
 
+echo
+echo "Starting dtnd ..."
 # start the dtnd with the defined settings
 nohup dtnd --nodeid "$node_name" \
            --cla mtcp \
            --endpoint "$mail_endpoint" \
-           --endpoint "dtn://$group_name/~news" > "$dtd_spool_log_path" 2>&1 &
+           --endpoint "dtn://$group_name/~news" > "$dtnd_spool_log_path" 2>&1 &
 dtnd_pid=$!
 
-sleep 600
+echo "Waiting for spooled articles to be sent to dtnd..."
+exact_ts_spool=$(date +%s.%N)
+status=$(rg "Transmission of bundle requested" "$dtnd_spool_log_path" | wc -l)
+echo "timestamp,articles" > "$logs_dir/spool-offload-$ts.csv"
+echo "0.0,$status" >> "$logs_dir/spool-offload-$ts.csv"
+while [ "$status" -lt "$send_msgs" ]; do
+    sleep 0.1
+    status=$(rg "Transmission of bundle requested" "$dtnd_spool_log_path" | wc -l)
+    diff=$(echo "scale=3; $(date +%s.%N) - $exact_ts_spool" | bc -l)
+    echo "$diff,$status" >> "$logs_dir/spool-offload-$ts.csv"
+done
+echo "  -> Done!"
+
+first_entry=$(rg --max-count 1 --no-line-number "Transmission of bundle requested" "$dtnd_spool_log_path")
+last_entry=$(rg --no-line-number "Transmission of bundle requested" "$dtnd_spool_log_path" | tail -n 1)
+start_time=$(echo $first_entry | cut --delimiter=" " --fields=1)
+stop_time=$(echo $last_entry | cut --delimiter=" " --fields=1)
+start_sec=$(date -d "$start_time" +"%s.%N")
+stop_sec=$(date -d "$stop_time" +"%s.%N")
+elapsed=$(echo "scale=3; $stop_sec - $start_sec" | bc -l)
+num_articles=$(rg --count "Transmission of bundle requested" "$dtnd_spool_log_path")
+msgs_per_sec=$(echo "scale=3; $num_articles / $elapsed" | bc -l)
+
+echo
+echo "--------------------------------------------------------------------------------"
+echo "Statistics for dtnd -- receiving articles from spool:"
+echo "  Spooled articles: $num_articles"
+echo "        Start time: $start_time"
+echo "         Stop time: $stop_time"
+echo "           Elapsed: $elapsed secs"
+echo "              Rate: $msgs_per_sec msgs/sec"
+echo "--------------------------------------------------------------------------------"
+
+
+
+echo
+echo "Waiting for moNNT.py to finish moving spooled articles to articles table..."
+status=$(rg "Starting data handler" "$monntpy_spool_log_path" | wc -l)
+while [ "$status" -lt "$send_msgs" ]; do
+    sleep 0.1
+    status=$(rg "Starting data handler" "$monntpy_spool_log_path" | wc -l)
+done
+echo "  -> Done!"
+
+
+first_entry=$(rg --max-count 1 --no-line-number "Starting data handler" "$monntpy_spool_log_path")
+last_entry=$(rg --no-line-number "Starting data handler" "$monntpy_spool_log_path" | tail -n 1)
+start_time=$(echo $first_entry | cut --delimiter=" " --fields=1-2)
+stop_time=$(echo $last_entry | cut --delimiter=" " --fields=1-2)
+start_sec=$(date -d "$start_time" +"%s.%N")
+stop_sec=$(date -d "$stop_time" +"%s.%N")
+elapsed=$(echo "scale=3; $stop_sec - $start_sec" | bc -l)
+num_articles=$(rg --count "Starting data handler" "$monntpy_spool_log_path")
+msgs_per_sec=$(echo "scale=3; $num_articles / $elapsed" | bc -l)
+
+echo
+echo "--------------------------------------------------------------------------------"
+echo "Statistics for moNNT.py -- receiving confirmations from dtnd and moving articles"
+echo "to articles table:"
+echo "  Spooled articles: $num_articles"
+echo "        Start time: $start_time"
+echo "         Stop time: $stop_time"
+echo "           Elapsed: $elapsed secs"
+echo "              Rate: $msgs_per_sec msgs/sec"
+echo "--------------------------------------------------------------------------------"
+
+echo
+echo "  -> dtnd output saved to: $dtnd_spool_log_path"
+echo "  -> moNNT.py output saved to: $monntpy_spool_log_path"
+
+
 
 echo "  -> Cleaning up ..."
 echo "    -> stopping dtnd"

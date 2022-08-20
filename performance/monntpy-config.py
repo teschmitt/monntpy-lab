@@ -17,7 +17,7 @@ SENDER_EMAIL = "monntpy@tu-darmstadt.de"
 
 
 config = {
-        "backend": {"db_url": "sqlite://db.sqlite3"},
+        "backend": {"db_url": "sqlite:///shared/db.sqlite3"},
         "dtnd": {
             "host": "http://127.0.0.1",
             "node_id": "dtn://monntpyeval/",

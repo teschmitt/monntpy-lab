@@ -42,7 +42,7 @@ async def post_articles(
     for i in range(art_num):
         full_article_b[
             1
-        ] = f"{ident_str}: {article_template[1]} Article {i + 1} of {art_num}".encode()
+        ] = f"Subject: {ident_str} - {article_template[1]} Article {i + 1} of {art_num}".encode()
         server.post(full_article_b)
 
 
@@ -60,7 +60,7 @@ async def main():
     await post_articles(
         server=nntplib.NNTP(host="127.0.0.1", port=1190),
         art_num=NUM_ARTICLES,
-        art_length="med",
+        art_length="short",
         ident_str="Spool performance",
     )
 
