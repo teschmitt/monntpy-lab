@@ -13,9 +13,11 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update                          && \
     apt-get install -y bc git ripgrep       && \
     rm -rf /var/lib/apt/lists/*             && \
-    pip install poetry==1.1.13              && \
-    mkdir -p /app/moNNT.py                  && \
+    pip install poetry==1.1.13
+
+RUN mkdir -p /app/moNNT.py                  && \
     # mkdir /app/py_dtn7                      && \
+    mkdir /app/articles                      && \
     mkdir /shared
 
 WORKDIR /app/moNNT.py
@@ -27,6 +29,8 @@ RUN rm db.sqlite3* && \
     poetry install --no-interaction --no-ansi --no-root --no-dev
 
 COPY monntpy-config.py /app/moNNT.py/backend/dtn7sqlite/config.py
+COPY spool.py /app
+COPY articles/ /app/articles
 COPY --from=builder /usr/local/bin/* /usr/local/bin/
 
 COPY run_benchmark.sh /

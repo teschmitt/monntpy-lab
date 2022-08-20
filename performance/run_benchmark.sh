@@ -19,18 +19,24 @@ group_name="monntpy.eval"
 # define log output locations
 ts=$(date +%s)
 logs_dir="/shared/logs"
-dtd_log_path="$logs_dir/dtnd-$ts.log"
-monntpy_log_path="$logs_dir/monntpy-$ts.log"
+dtd_ingest_log_path="$logs_dir/dtnd-ingest-$ts.log"
+monntpy_ingest_log_path="$logs_dir/monntpy-ingest-$ts.log"
+dtd_spool_log_path="$logs_dir/dtnd-spool-$ts.log"
+monntpy_spool_log_path="$logs_dir/monntpy-spool-$ts.log"
+
+# ----------------------------------------------- Start ingestion benchmark -----------------------------------------------
+
+LINE 25:
 
 cat << EOF
 
---------------------------------------------------------------------------------"
-moNNT.py performance testing -- Ingestion benchmark"
---------------------------------------------------------------------------------"
-This benchmark will load the store of the DTN daemon with a certain number of"
-prepared articles, then start the moNNT.py server and benchmark the time it"
-takes the server to ingest all relevant articles from the DTNd."
---------------------------------------------------------------------------------"
+--------------------------------------------------------------------------------
+moNNT.py performance testing -- Ingestion benchmark
+--------------------------------------------------------------------------------
+This benchmark will load the store of the DTN daemon with a certain number of
+prepared articles, then start the moNNT.py server and benchmark the time it
+takes the server to ingest all relevant articles from the DTNd.
+--------------------------------------------------------------------------------
 EOF
 
 echo "Starting DTN daemon" # with following args:"
@@ -46,7 +52,7 @@ echo "Starting DTN daemon" # with following args:"
 nohup dtnd --nodeid "$node_name" \
            --cla mtcp \
            --endpoint "$mail_endpoint" \
-           --endpoint "dtn://$group_name/~news" > "$dtd_log_path" 2>&1 &
+           --endpoint "dtn://$group_name/~news" > "$dtd_ingest_log_path" 2>&1 &
 dtnd_pid=$!
 sleep 1
 
@@ -63,31 +69,31 @@ echo "Finished filling $send_msgs messages into dtnd in $(echo "$(date +%s) - $t
 echo
 echo "Starting moNNT.py NNTP server to fetch the articles"
 cd /app/moNNT.py
-nohup ./main.py > "$monntpy_log_path" 2>&1 &
+nohup ./main.py > "$monntpy_ingest_log_path" 2>&1 &
 monntpy_pid=$!
 
 echo "Waiting for all messages to be ingested..."
-exact_ts=$(date +%s.%N)
-status=$(rg "Created new newsgroup article" "$monntpy_log_path" | wc -l)
+exact_ts_ingest=$(date +%s.%N)
+status=$(rg "Created new newsgroup article" "$monntpy_ingest_log_path" | wc -l)
 echo "timestamp,articles" > "$logs_dir/articles-ingested-$ts.csv"
 echo "0.0,$status" >> "$logs_dir/articles-ingested-$ts.csv"
 while [ "$status" -lt "$send_msgs" ]; do
     sleep 0.1
-    status=$(rg "Created new newsgroup article" "$monntpy_log_path" | wc -l)
-    diff=$(echo "scale=3; $(date +%s.%N) - $exact_ts" | bc -l)
+    status=$(rg "Created new newsgroup article" "$monntpy_ingest_log_path" | wc -l)
+    diff=$(echo "scale=3; $(date +%s.%N) - $exact_ts_ingest" | bc -l)
     echo "$diff,$status" >> "$logs_dir/articles-ingested-$ts.csv"
 done
 echo "  -> Done!"
 
 
-first_entry=$(rg --max-count 1 --no-line-number "Ingesting all newsgroup bundles in DTNd bundle store" "$monntpy_log_path")
-last_entry=$(rg --no-line-number "Created new newsgroup article" "$monntpy_log_path" | tail -n 1)
+first_entry=$(rg --max-count 1 --no-line-number "Ingesting all newsgroup bundles in DTNd bundle store" "$monntpy_ingest_log_path")
+last_entry=$(rg --no-line-number "Created new newsgroup article" "$monntpy_ingest_log_path" | tail -n 1)
 start_time=$(echo $first_entry | cut -d ' ' -f 1-2)
 stop_time=$(echo $last_entry | cut -d ' ' -f 1-2)
 start_sec=$(date -d "$start_time" +"%s.%N")
 stop_sec=$(date -d "$stop_time" +"%s.%N")
 elapsed=$(echo "scale=3; $stop_sec - $start_sec" | bc -l)
-num_articles=$(rg --count "Created new newsgroup article" "$monntpy_log_path")
+num_articles=$(rg --count "Created new newsgroup article" "$monntpy_ingest_log_path")
 msgs_per_sec=$(echo "scale=3; $num_articles / $elapsed" | bc -l)
 
 echo
@@ -101,8 +107,48 @@ echo "       Total: $msgs_per_sec msgs/sec"
 echo "--------------------------------------------------------------------------------"
 
 echo
-echo "  -> dtnd output saved to: $dtd_log_path"
-echo "  -> moNNT.py output saved to: $monntpy_log_path"
+echo "  -> dtnd output saved to: $dtd_ingest_log_path"
+echo "  -> moNNT.py output saved to: $monntpy_ingest_log_path"
+
+echo "  -> Cleaning up ..."
+echo "    -> stopping dtnd"
+kill $dtnd_pid
+echo "    -> stopping moNNT.py"
+kill $monntpy_pid
+
+# ------------------------------------------------- Start spool benchmark -------------------------------------------------
+
+cat << EOF
+
+--------------------------------------------------------------------------------
+moNNT.py performance testing -- Spool offloading benchmark
+--------------------------------------------------------------------------------
+This benchmark will load the spool of the moNNT.py Server with a certain number
+of prepared articles, then start the DTN daemon and benchmark the time it
+takes the server to offload all spooled articles to the DTNd.
+--------------------------------------------------------------------------------
+EOF
+
+echo "Python: $(which python)"
+echo "Python3: $(which python3)"
+echo "Starting moNNT.py NNTP server to load the spool"
+cd /app/moNNT.py
+nohup ./main.py > "$monntpy_spool_log_path" 2>&1 &
+monntpy_pid=$!
+
+sleep 1 # let moNNT.py come online
+
+cd /app
+./spool.py 2000
+
+# start the dtnd with the defined settings
+nohup dtnd --nodeid "$node_name" \
+           --cla mtcp \
+           --endpoint "$mail_endpoint" \
+           --endpoint "dtn://$group_name/~news" > "$dtd_spool_log_path" 2>&1 &
+dtnd_pid=$!
+
+sleep 600
 
 echo "  -> Cleaning up ..."
 echo "    -> stopping dtnd"
