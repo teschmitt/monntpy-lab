@@ -2,12 +2,8 @@
 
 # define how many articles to queue in the dtnd store and how many updates
 # to show while filling the store
-send_msgs=1000
+send_msgs=$NUM_ARTICLES
 tty_output_num=10
-if [ -n "$1" ]; then
-    # if there is a number provided, change numer of messages to that number
-    send_msgs=$1
-fi
 part=$(echo "$send_msgs / $tty_output_num" | bc)
 
 # some settings for the dtnd
@@ -30,9 +26,6 @@ monntpy_spool_log_path="$logs_dir/monntpy-spool-$ts.log"
 # ----------------------------------------------- Start ingestion benchmark -----------------------------------------------
 
 
-
-
-LINE 25:
 
 cat << EOF
 
@@ -163,26 +156,27 @@ nohup dtnd --nodeid "$node_name" \
 dtnd_pid=$!
 
 echo "Waiting for spooled articles to be sent to dtnd..."
+search_str="Transmission of bundle requested"
 exact_ts_spool=$(date +%s.%N)
-status=$(rg "Transmission of bundle requested" "$dtnd_spool_log_path" | wc -l)
+status=$(rg "$search_str" "$dtnd_spool_log_path" | wc -l)
 echo "timestamp,articles" > "$logs_dir/spool-offload-$ts.csv"
 echo "0.0,$status" >> "$logs_dir/spool-offload-$ts.csv"
 while [ "$status" -lt "$send_msgs" ]; do
     sleep 0.1
-    status=$(rg "Transmission of bundle requested" "$dtnd_spool_log_path" | wc -l)
+    status=$(rg "$search_str" "$dtnd_spool_log_path" | wc -l)
     diff=$(echo "scale=3; $(date +%s.%N) - $exact_ts_spool" | bc -l)
     echo "$diff,$status" >> "$logs_dir/spool-offload-$ts.csv"
 done
 echo "  -> Done!"
 
-first_entry=$(rg --max-count 1 --no-line-number "Transmission of bundle requested" "$dtnd_spool_log_path")
-last_entry=$(rg --no-line-number "Transmission of bundle requested" "$dtnd_spool_log_path" | tail -n 1)
+first_entry=$(rg --max-count 1 --no-line-number "$search_str" "$dtnd_spool_log_path")
+last_entry=$(rg --no-line-number "$search_str" "$dtnd_spool_log_path" | tail -n 1)
 start_time=$(echo $first_entry | cut --delimiter=" " --fields=1)
 stop_time=$(echo $last_entry | cut --delimiter=" " --fields=1)
 start_sec=$(date -d "$start_time" +"%s.%N")
 stop_sec=$(date -d "$stop_time" +"%s.%N")
 elapsed=$(echo "scale=3; $stop_sec - $start_sec" | bc -l)
-num_articles=$(rg --count "Transmission of bundle requested" "$dtnd_spool_log_path")
+num_articles=$(rg --count "$search_str" "$dtnd_spool_log_path")
 msgs_per_sec=$(echo "scale=3; $num_articles / $elapsed" | bc -l)
 
 echo
@@ -199,22 +193,23 @@ echo "--------------------------------------------------------------------------
 
 echo
 echo "Waiting for moNNT.py to finish moving spooled articles to articles table..."
-status=$(rg "Starting data handler" "$monntpy_spool_log_path" | wc -l)
+search_str="Starting data handler"
+status=$(rg "$search_str" "$monntpy_spool_log_path" | wc -l)
 while [ "$status" -lt "$send_msgs" ]; do
     sleep 0.1
-    status=$(rg "Starting data handler" "$monntpy_spool_log_path" | wc -l)
+    status=$(rg "$search_str" "$monntpy_spool_log_path" | wc -l)
 done
 echo "  -> Done!"
 
 
-first_entry=$(rg --max-count 1 --no-line-number "Starting data handler" "$monntpy_spool_log_path")
-last_entry=$(rg --no-line-number "Starting data handler" "$monntpy_spool_log_path" | tail -n 1)
+first_entry=$(rg --max-count 1 --no-line-number "$search_str" "$monntpy_spool_log_path")
+last_entry=$(rg --no-line-number "$search_str" "$monntpy_spool_log_path" | tail -n 1)
 start_time=$(echo $first_entry | cut --delimiter=" " --fields=1-2)
 stop_time=$(echo $last_entry | cut --delimiter=" " --fields=1-2)
 start_sec=$(date -d "$start_time" +"%s.%N")
 stop_sec=$(date -d "$stop_time" +"%s.%N")
 elapsed=$(echo "scale=3; $stop_sec - $start_sec" | bc -l)
-num_articles=$(rg --count "Starting data handler" "$monntpy_spool_log_path")
+num_articles=$(rg --count "$search_str" "$monntpy_spool_log_path")
 msgs_per_sec=$(echo "scale=3; $num_articles / $elapsed" | bc -l)
 
 echo
