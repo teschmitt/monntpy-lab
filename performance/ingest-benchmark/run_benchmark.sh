@@ -2,7 +2,7 @@
 
 # define how many articles to queue in the dtnd store and how many updates
 # to show while filling the store
-send_msgs=20000
+send_msgs=5000
 tty_output_num=10
 if [ -n "$1" ]; then
     # if there is a number provided, change numer of messages to that number
@@ -23,6 +23,8 @@ dtd_log_path="$logs_dir/dtnd-$ts.log"
 monntpy_log_path="$logs_dir/monntpy-$ts.log"
 
 cat << EOF
+
+--------------------------------------------------------------------------------"
 moNNT.py performance testing -- Ingestion benchmark"
 --------------------------------------------------------------------------------"
 This benchmark will load the store of the DTN daemon with a certain number of"
@@ -31,27 +33,27 @@ takes the server to ingest all relevant articles from the DTNd."
 --------------------------------------------------------------------------------"
 EOF
 
-echo "Starting DTN daemon with following args:"
-cat << EOF
-dtnd --nodeid   $node_name \\
-     --cla m    tcp \\
-     --endpoint $mail_endpoint \\
-     --endpoint dtn://$group_name/~news
-
-EOF
+echo "Starting DTN daemon" # with following args:"
+# cat << EOF
+# dtnd --nodeid   $node_name \\
+#      --cla      mtcp \\
+#      --endpoint $mail_endpoint \\
+#      --endpoint dtn://$group_name/~news
+#
+# EOF
 
 # start the dtnd with the defined settings
 nohup dtnd --nodeid "$node_name" \
            --cla mtcp \
            --endpoint "$mail_endpoint" \
            --endpoint "dtn://$group_name/~news" > "$dtd_log_path" 2>&1 &
-
+dtnd_pid=$!
 sleep 1
 
 
 echo "Sending articles to DTNd store ..."
 for i in $(seq 1 $send_msgs); do
-    if [ $(echo "$i % $part" | bc) = "0" ]; then echo "  -> Sending message nr. $i"; fi
+    # if [ $(echo "$i % $part" | bc) = "0" ]; then echo "  -> Sending message nr. $i"; fi
     dtnsend --sender "dtn://$node_name/$mail_endpoint" \
             --receiver "dtn://$group_name/~news" \
             /shared/ingest.cbor > /dev/null 2>&1
@@ -61,15 +63,19 @@ echo "Finished filling $send_msgs messages into dtnd in $(echo "$(date +%s) - $t
 echo
 echo "Starting moNNT.py NNTP server to fetch the articles"
 cd /app/moNNT.py
-# nohup ./main.py > "$monntpy_log_path" 2>&1 &
-./main.py
+nohup ./main.py > "$monntpy_log_path" 2>&1 &
+monntpy_pid=$!
 
 echo "Waiting for all messages to be ingested..."
+exact_ts=$(date +%s.%N)
 status=$(rg "Created new newsgroup article" "$monntpy_log_path" | wc -l)
+echo "timestamp,articles" > "$logs_dir/articles-ingested-$ts.csv"
+echo "0.0,$status" >> "$logs_dir/articles-ingested-$ts.csv"
 while [ "$status" -lt "$send_msgs" ]; do
-    sleep 1
+    sleep 0.2
     status=$(rg "Created new newsgroup article" "$monntpy_log_path" | wc -l)
-    echo "  -> Ingested $status messages ..."
+    diff=$(echo "scale=3; $(date +%s.%N) - $exact_ts" | bc -l)
+    echo "$diff,$status" >> "$logs_dir/articles-ingested-$ts.csv"
 done
 echo "  -> Done!"
 
@@ -94,11 +100,12 @@ echo "     Elapsed: $elapsed secs"
 echo "       Total: $msgs_per_sec msgs/sec"
 echo "--------------------------------------------------------------------------------"
 
-
-
 echo
 echo "  -> dtnd output saved to: dtnd-$ts.log"
 echo "  -> moNNT.py output saved to: monntpy-$ts.log"
 
 echo "  -> Cleaning up ..."
-# killall dtnd
+echo "    -> stopping dtnd"
+kill $dtnd_pid
+echo "    -> stopping moNNT.py"
+kill $monntpy_pid
