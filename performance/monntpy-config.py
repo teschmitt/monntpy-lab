@@ -12,12 +12,15 @@ from the environment or passed to start-monttpy.sh
 
 # SENDER_EMAIL = os.environ.get('SENDER_EMAIL')
 SENDER_EMAIL = "monntpy@tu-darmstadt.de"
+DB_PATH = os.environ.get('DB_PATH')
 # SESSION_DIR = os.environ.get('SESSION_DIR')
 # HOSTNAME = subprocess.run(["hostname"], stdout=subprocess.PIPE).stdout.decode().strip()
 
+if DB_PATH.endswith("/"):
+    DB_PATH = DB_PATH[:-1]
 
 config = {
-        "backend": {"db_url": "sqlite:///shared/db.sqlite3"},
+        "backend": {"db_url": f"sqlite://{DB_PATH}/db.sqlite3"},
         "dtnd": {
             "host": "http://127.0.0.1",
             "node_id": "dtn://monntpyeval/",

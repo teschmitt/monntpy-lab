@@ -157,15 +157,10 @@ dtnd_pid=$!
 
 echo "Waiting for spooled articles to be sent to dtnd..."
 search_str="Transmission of bundle requested"
-exact_ts_spool=$(date +%s.%N)
 status=$(rg "$search_str" "$dtnd_spool_log_path" | wc -l)
-echo "timestamp,articles" > "$logs_dir/spool-offload-$ts.csv"
-echo "0.0,$status" >> "$logs_dir/spool-offload-$ts.csv"
 while [ "$status" -lt "$send_msgs" ]; do
     sleep 0.1
     status=$(rg "$search_str" "$dtnd_spool_log_path" | wc -l)
-    diff=$(echo "scale=3; $(date +%s.%N) - $exact_ts_spool" | bc -l)
-    echo "$diff,$status" >> "$logs_dir/spool-offload-$ts.csv"
 done
 echo "  -> Done!"
 
