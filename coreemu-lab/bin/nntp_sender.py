@@ -10,12 +10,16 @@ import time
 
 # if argujments are not given, use default values
 if len(sys.argv) < 3:
-    print("Usage: nntp_sender.py <SERVER IP> <EMAIL> [<INTERVAL>]")
+    print("Usage: nntp_sender.py <SERVER IP> <EMAIL> [<INTERVAL> [<NUM_ARTICLES>]]")
     sys.exit(1)
 if len(sys.argv) > 3:
     INTERVAL = float(sys.argv[3])
 else:
     INTERVAL = 5.0
+if len(sys.argv) > 4:
+    NUM_ARTICLES = float(sys.argv[4])
+else:
+    NUM_ARTICLES = 5
 
 print(f"Args: {sys.argv}")
 
@@ -24,7 +28,7 @@ email_address = sys.argv[2]
 print(f"IP:     {server_ip}")
 print(f"E-Mail: {email_address}")
 
-TESTING_GROUP = "germany.hessen.darmstadt-dieburg.dieburg"
+TESTING_GROUP = "monntpy.eval"
 
 
 MSG_BODY = """
@@ -74,4 +78,7 @@ while True:
     print(f"Sending article '{full_article[1]}'")
     server.post(list(map(lambda line: line.encode(), full_article)))
     num += 1
+    if num > NUM_ARTICLES:
+        break
 
+print(f"Finished sending {NUM_ARTICLES}. Shutting down, goodbye!")
