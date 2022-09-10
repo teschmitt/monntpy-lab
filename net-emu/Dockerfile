@@ -41,8 +41,8 @@ COPY ./moNNT.py/ /app/moNNT.py
 WORKDIR /app/moNNT.py
 RUN poetry install --no-interaction --no-ansi --no-root --no-dev
 
-RUN mkdir -p /app/moNNT.py && mkdir /app/modified
-COPY ./modified/* /app/modified/
+RUN mkdir -p /app/moNNT.py && mkdir /app/assets
+COPY ./assets/* /app/assets/
 
 # -----------------------------------------------------------------------------
 

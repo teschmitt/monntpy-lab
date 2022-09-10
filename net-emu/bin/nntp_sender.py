@@ -61,7 +61,7 @@ article_template = [
     f"Newsgroups: {TESTING_GROUP}",
     "MIME-Version: 1.0",
     "User-Agent: Full Monty v0.1",
-    "Content-Type: text/plain; ",
+    "Content-Type: text/plain; charset=UTF-8",
     "Content-Transfer-Encoding: 8bit",
     "",
 ]
