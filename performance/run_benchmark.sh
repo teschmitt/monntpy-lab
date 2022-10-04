@@ -37,7 +37,7 @@ do_ingest() {
     msgs_per_sec=$(echo "scale=3; $num_articles / $elapsed" | bc -l)
 
     if [ $run_mode == "experiments" ]; then
-        results="$num_articles,$start_time,$stop_time,$elapsed,$msgs_per_sec"
+        results="$num_articles;$start_time;$stop_time;$elapsed;$msgs_per_sec"
         echo $results >> "$monntpy_ingest_stats_path"
         # clean up environment
         rm -rf "$db_path/db.sqlite3"
@@ -105,7 +105,7 @@ do_spool() {
     msgs_per_sec=$(echo "scale=3; $num_articles / $elapsed" | bc -l)
 
     if [ $run_mode == "experiments" ]; then
-        results="$num_articles,$start_time,$stop_time,$elapsed,$msgs_per_sec"
+        results="$num_articles;$start_time;$stop_time;$elapsed;$msgs_per_sec"
         echo $results >> "$dtnd_spool_stats_path"
         # clean up environment
     else
@@ -147,7 +147,7 @@ do_spool() {
     msgs_per_sec=$(echo "scale=3; $num_articles / $elapsed" | bc -l)
 
     if [ $run_mode == "experiments" ]; then
-        results="$num_articles,$start_time,$stop_time,$elapsed,$msgs_per_sec"
+        results="$num_articles;$start_time;$stop_time;$elapsed;$msgs_per_sec"
         echo $results >> "$monntpy_spool_stats_path"
         rm -rf "$db_path/db.sqlite3"
         rm -rf $dtnd_spool_log_path
@@ -219,15 +219,16 @@ monntpy_spool_stats_path="$stats_dir/monntpy-spool-$ts.csv"
 # Each experiment is defined by a number of articles and the number of runs that
 # are executed on this number of articles.
 if [ $run_mode == "experiments" ]; then
-    csv_header="num_articles,start,stop,elapsed,rate"
+    csv_header="num_articles;start;stop;elapsed;rate"
     echo $csv_header >> "$monntpy_ingest_stats_path"
     echo $csv_header >> "$dtnd_spool_stats_path"
     echo $csv_header >> "$monntpy_spool_stats_path"
     
-    # experiments=( 10 100 1000 10000 100000 )
-    # experiment_runs=( 100, 50, 25, 10, 5 )
-    experiments=( 10 100 1000 )
-    experiment_runs=( 10 5 1 )
+    experiments=( 10 100 1000 10000 100000 )
+    # experiment_runs=( 100 50 25 10 5 )
+    experiment_runs=( 1 1 1 1 1 )
+    # experiments=( 10 100 1000 )
+    # experiment_runs=( 10 5 1 )
     num_experiments=${#experiments[@]}
     echo "Experiment mode. Will do $num_experiments experiments."
 else
