@@ -1,6 +1,7 @@
 results-*/
 experiment.log
 logs/
+stats/
 db.sqlite*
 .ipynb_checkpoints/
 

@@ -38,7 +38,6 @@ do_ingest() {
 
     if [ $run_mode == "experiments" ]; then
         results="$num_articles,$start_time,$stop_time,$elapsed,$msgs_per_sec"
-        echo "$results"
         echo $results >> "$monntpy_ingest_stats_path"
         # clean up environment
         rm -rf "$db_path/db.sqlite3"
