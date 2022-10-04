@@ -8,7 +8,7 @@ part=$(echo "$send_msgs / $tty_output_num" | bc)
 
 # some settings for the dtnd
 # these must be coordinated with the settings in monntpy-config.py
-node_name="monntpyeval"
+node_name="n1"
 mail_endpoint="mail/tu-darmstadt.de/monntpy"
 group_name="monntpy.eval"
 
@@ -21,6 +21,8 @@ dtnd_spool_log_path="$logs_dir/dtnd-spool-$ts.log"
 monntpy_spool_log_path="$logs_dir/monntpy-spool-$ts.log"
 
 
+# set log level to info in order to not encumber moNNT.py's ultra-high performance
+sed -Ei 's/level=\S*/level=INFO/g' /app/moNNT.py/logging_conf.ini
 
 
 # ----------------------------------------------- Start ingestion benchmark -----------------------------------------------
@@ -32,7 +34,7 @@ cat << EOF
 --------------------------------------------------------------------------------
 moNNT.py performance testing -- Ingestion benchmark
 --------------------------------------------------------------------------------
-This benchmark will load the store of the DTN daemon with a certain number of
+This benchmark will load the store of the DTN daemon with $send_msgs
 prepared articles, then start the moNNT.py server and benchmark the time it
 takes the server to ingest all relevant articles from the DTNd.
 --------------------------------------------------------------------------------
@@ -117,7 +119,6 @@ kill $monntpy_pid
 
 
 
-
 # ------------------------------------------------- Start spool benchmark -------------------------------------------------
 
 
@@ -128,8 +129,8 @@ cat << EOF
 --------------------------------------------------------------------------------
 moNNT.py performance testing -- Spool offloading benchmark
 --------------------------------------------------------------------------------
-This benchmark will load the spool of the moNNT.py Server with a certain number
-of prepared articles, then start the DTN daemon and benchmark the time it
+This benchmark will load the spool of the moNNT.py Server with $send_msgs
+prepared articles, then start the DTN daemon and benchmark the time it
 takes the server to offload all spooled articles to the DTNd.
 --------------------------------------------------------------------------------
 EOF
@@ -145,6 +146,7 @@ cd /app
 spool_ts=$(date +%s)
 ./spool.py $send_msgs
 echo "Finished filling $send_msgs articles into spool in $(echo "$(date +%s) - $spool_ts" | bc) seconds."
+
 
 echo
 echo "Starting dtnd ..."
@@ -163,6 +165,7 @@ while [ "$status" -lt "$send_msgs" ]; do
     status=$(rg "$search_str" "$dtnd_spool_log_path" | wc -l)
 done
 echo "  -> Done!"
+
 
 first_entry=$(rg --max-count 1 --no-line-number "$search_str" "$dtnd_spool_log_path")
 last_entry=$(rg --no-line-number "$search_str" "$dtnd_spool_log_path" | tail -n 1)
@@ -184,12 +187,13 @@ echo "           Elapsed: $elapsed secs"
 echo "              Rate: $msgs_per_sec msgs/sec"
 echo "--------------------------------------------------------------------------------"
 
-
+# We've sent the spool contents to the dtnd, now we wait for all sent bundles to be 
+# acknowledged by the dtnd and sent back through the websocket subscription
 
 echo
 echo "Waiting for moNNT.py to finish moving spooled articles to articles table..."
-search_str="Starting data handler"
-status=$(rg "$search_str" "$monntpy_spool_log_path" | wc -l)
+search_str="Removed spool entry"
+status=$(rg "$search_str" "$dtnd_spool_log_path" | wc -l)
 while [ "$status" -lt "$send_msgs" ]; do
     sleep 0.1
     status=$(rg "$search_str" "$monntpy_spool_log_path" | wc -l)
@@ -197,7 +201,23 @@ done
 echo "  -> Done!"
 
 
-first_entry=$(rg --max-count 1 --no-line-number "$search_str" "$monntpy_spool_log_path")
+# test speed of pure communication with dtnd by passing on backchannel data
+# for this, replace
+#
+# self._loop.run_until_complete(self._async_ws_data_handler(ws_data))
+#
+# with this:
+#
+# if isinstance(ws_data, bytes):
+#     self.logger.info("Removed spool entry")
+# return
+# # self._loop.run_until_complete(self._async_ws_data_handler(ws_data))
+
+
+
+
+start_string="Sending $send_msgs spooled messages to DTNd"
+first_entry=$(rg --max-count 1 --no-line-number "$start_string" "$monntpy_spool_log_path")
 last_entry=$(rg --no-line-number "$search_str" "$monntpy_spool_log_path" | tail -n 1)
 start_time=$(echo $first_entry | cut --delimiter=" " --fields=1-2)
 stop_time=$(echo $last_entry | cut --delimiter=" " --fields=1-2)
