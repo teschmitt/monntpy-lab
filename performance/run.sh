@@ -8,7 +8,7 @@ else
 fi
 
 if [ -n "$2" ]; then
-    # if there is a number provided, change numer of messages to that number
+    # if there is a path provided, change path to the DB to that path
     db_path="$2"
 else
     db_path="/app/moNNT.py"
