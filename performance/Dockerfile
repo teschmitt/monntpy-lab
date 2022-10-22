@@ -10,8 +10,8 @@ RUN git clone https://github.com/dtn7/dtn7-rs && \
 FROM python:3.10-slim
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update                          && \
-    apt-get install -y bc git ripgrep       && \
+RUN apt update                              && \
+    apt install -y bc git ripgrep psmisc    && \
     rm -rf /var/lib/apt/lists/*             && \
     pip install poetry==1.1.13
 
@@ -39,6 +39,6 @@ COPY spool.py /app
 COPY articles/ /app/articles
 COPY --from=builder /usr/local/bin/* /usr/local/bin/
 
-COPY run_benchmark.sh /
+COPY perf_eval.sh /
 
-ENTRYPOINT ["/run_benchmark.sh"]
+ENTRYPOINT ["/perf_eval.sh"]

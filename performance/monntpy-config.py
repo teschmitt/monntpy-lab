@@ -32,9 +32,9 @@ config = {
             "reconnection_pause": 300,
             "constant_wait": 0.75,
         },
-        "bundles": {"lifetime": 3600000, "delivery_notification": False, "compress_body": False},
+        "bundles": {"lifetime": 86400000, "delivery_notification": False, "compress_body": True},
         "usenet": {
-            "expiry_time": 86400000,
+            "expiry_time": 2419200000,
             "email": SENDER_EMAIL,
             "newsgroups": [
                 "monntpy.eval",
