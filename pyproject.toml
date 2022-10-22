@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "monntpy-lab"
+version = "0.1.0"
+description = ""
+authors = ["Thomas Schmitt <t.e.schmitt@posteo.de>"]
+readme = "README.md"
+packages = [{include = "monntpy_lab"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+jupyterlab = "^3.4.8"
+pandas = "^1.5.1"
+seaborn = "^0.12.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
