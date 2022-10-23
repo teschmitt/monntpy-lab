@@ -1,5 +1,6 @@
 #!/usr/bin/python3 -u
 
+from datetime import datetime
 import logging
 import nntplib
 import subprocess
@@ -67,7 +68,7 @@ article_template = [
 ]
 
 while True:
-    print(f"Sleeping for {INTERVAL} seconds...")
+    print(f"{datetime.utcnow().isoformat()} Sleeping for {INTERVAL} seconds...")
     time.sleep(INTERVAL)
     full_article = []
     full_article.extend(article_template)
@@ -75,7 +76,7 @@ while True:
 
     full_article.append(MSG_BODY)
 
-    print(f"Sending article '{full_article[1]}'")
+    print(f"{datetime.utcnow().isoformat()} Sending article '{full_article[1]}'")
     server.post(list(map(lambda line: line.encode(), full_article)))
     num += 1
     if num > NUM_ARTICLES:

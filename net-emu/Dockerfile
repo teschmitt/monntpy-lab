@@ -34,7 +34,7 @@ RUN pip install poetry==1.1.13 && \
     mkdir -p /app/moNNT.py && \
     cd /app/moNNT.py && \
     git clone https://github.com/teschmitt/moNNT.py.git . && \
-    git checkout 4ed3d9b && \
+    git checkout 878a354 && \
     poetry install --no-interaction --no-ansi --no-root --no-dev
 
 COPY ./assets/* /app/assets/
