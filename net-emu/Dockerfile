@@ -1,9 +1,9 @@
 # -----------------------------------------------------------------------------
-FROM rust:1.58 as builder
+FROM rust:1.62.1 as builder
 WORKDIR /root
 #RUN rustup component add rustfmt
 
-RUN cargo install --locked --bins --examples --root /usr/local --git https://github.com/dtn7/dtn7-rs --rev 077d9a5 dtn7
+RUN cargo install --locked --bins --examples --root /usr/local --git https://github.com/dtn7/dtn7-rs --rev 6588a91 dtn7
 
 # -----------------------------------------------------------------------------
 
@@ -29,19 +29,14 @@ ENV USER root
 
 # --------------------------- moNNT.py Installation ---------------------------
 
-RUN pip install poetry==1.1.13
+RUN pip install poetry==1.1.13 && \
+    mkdir -p /app/assets && \
+    mkdir -p /app/moNNT.py && \
+    cd /app/moNNT.py && \
+    git clone https://github.com/teschmitt/moNNT.py.git . && \
+    git checkout 4ed3d9b && \
+    poetry install --no-interaction --no-ansi --no-root --no-dev
 
-# following commands rely on a moNNT.py installation copied to the current
-# build environment
-COPY ./moNNT.py/ /app/moNNT.py
-
-# it is probably wise to substitute the above two lines with a git clone
-# once the py-dtn7 package is fetched from PyPI instead of the local dev
-# copy
-WORKDIR /app/moNNT.py
-RUN poetry install --no-interaction --no-ansi --no-root --no-dev
-
-RUN mkdir -p /app/moNNT.py && mkdir /app/assets
 COPY ./assets/* /app/assets/
 
 # -----------------------------------------------------------------------------

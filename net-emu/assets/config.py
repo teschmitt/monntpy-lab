@@ -1,13 +1,6 @@
-from logging import Logger
 from pathlib import Path
 import os
 import subprocess
-
-
-from logger import global_logger
-
-logger: Logger = global_logger()
-
 
 """
 For running this in CORE Emu Lab, we need to change some of moNNT.py's configuration
@@ -35,12 +28,12 @@ config = {
         "backoff": {
             "initial_wait": 0.1,
             "max_retries": 20,
-            "reconn_pause": 300,
+            "reconnection_pause": 300,
             "constant_wait": 0.75,
         },
-        "bundles": {"lifetime": 86400000, "delivery_notification": False},
+        "bundles": {"lifetime": 86400000, "delivery_notification": False, "compress_body": False},
         "usenet": {
-            "expiry_time": 86400000,
+            "expiry_time": 2419200000,
             "email": SENDER_EMAIL,
             "newsgroups": [
                 "monntpy.eval",

@@ -28,7 +28,6 @@ docker run -it --rm \
     -v $SHARED:/shared \
     --cap-add=NET_ADMIN \
     --cap-add=SYS_ADMIN \
-    -e SSHKEY="`cat ~/.ssh/id_rsa.pub`" \
     -e DISPLAY=host.docker.internal:0 \
     --privileged \
     $INTERACTIVE \
@@ -42,7 +41,6 @@ docker run -it --rm \
     -v $SHARED:/shared \
     --cap-add=NET_ADMIN \
     --cap-add=SYS_ADMIN \
-    -e SSHKEY="`cat ~/.ssh/id_rsa.pub`" \
     -e DISPLAY \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     --privileged \

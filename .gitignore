@@ -1,7 +1,9 @@
 results-*/
+*-results/
 experiment.log
 logs/
 stats/
+scratch/
 db.sqlite*
 .ipynb_checkpoints/
 
