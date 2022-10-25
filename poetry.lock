@@ -133,6 +133,18 @@ css = ["tinycss2 (>=1.1.0,<1.2)"]
 dev = ["Sphinx (==4.3.2)", "black (==22.3.0)", "build (==0.8.0)", "flake8 (==4.0.1)", "hashin (==0.17.0)", "mypy (==0.961)", "pip-tools (==6.6.2)", "pytest (==7.1.2)", "tox (==3.25.0)", "twine (==4.0.1)", "wheel (==0.37.1)"]
 
 [[package]]
+name = "cbor2"
+version = "5.4.3"
+description = "CBOR (de)serializer with extensive tag support"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+doc = ["sphinx-autodoc-typehints (>=1.2.0)", "sphinx-rtd-theme"]
+test = ["pytest", "pytest-cov"]
+
+[[package]]
 name = "certifi"
 version = "2022.9.24"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -889,6 +901,19 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "py-dtn7"
+version = "0.2.1a4"
+description = ""
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+
+[package.dependencies]
+cbor2 = ">=5.4.3,<6.0.0"
+requests = ">=2.27.1,<3.0.0"
+websocket-client = ">=1.3.2,<2.0.0"
+
+[[package]]
 name = "pycparser"
 version = "2.21"
 description = "C parser in Python"
@@ -1221,7 +1246,7 @@ test = ["websockets"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "3e9a1c5c65f0c8f545253fb42ba652e18942d23f2312857430852e34d14ee47a"
+content-hash = "9661613015cbf4e76a957ed5b280381ed7356d7feb5f09039308a9df5a32e04d"
 
 [metadata.files]
 anyio = [
@@ -1282,6 +1307,36 @@ beautifulsoup4 = [
 bleach = [
     {file = "bleach-5.0.1-py3-none-any.whl", hash = "sha256:085f7f33c15bd408dd9b17a4ad77c577db66d76203e5984b1bd59baeee948b2a"},
     {file = "bleach-5.0.1.tar.gz", hash = "sha256:0d03255c47eb9bd2f26aa9bb7f2107732e7e8fe195ca2f64709fcf3b0a4a085c"},
+]
+cbor2 = [
+    {file = "cbor2-5.4.3-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:8a643b19ace1584043bbf4e2d0b4fae8bebd6b6ffab14ea6478d3ff07f58e854"},
+    {file = "cbor2-5.4.3-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:e10f2f4fcf5ab6a8b24d22f7109f48cad8143f669795899370170d7b36ed309f"},
+    {file = "cbor2-5.4.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2de925608dc6d73cd1aab08800bff38f71f90459c15db3a71a67023b0fc697da"},
+    {file = "cbor2-5.4.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:62fc15bfe187e4994c457e6055687514c417d6099de62dd33ae766561f05847e"},
+    {file = "cbor2-5.4.3-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:3843a9bb970343e9c896aa71a34fa80983cd0ddec6eacdb2284b5e83f4ee7511"},
+    {file = "cbor2-5.4.3-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:b35c5d4d14fe804f718d5a5968a528970d2a7046aa87045538f189a98e5c7055"},
+    {file = "cbor2-5.4.3-cp310-cp310-win_amd64.whl", hash = "sha256:0a3a1b2f6b83ab4ce806df48360cc16d34cd315f17549dbda9fdd371bea04497"},
+    {file = "cbor2-5.4.3-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:4b09ff6148a8cd529512479a1d6521fb7687fb03b448973933c3b03711d00bfc"},
+    {file = "cbor2-5.4.3-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d21ccd1ec802e88dba1c373724a09538a0237116ab589c5301ca4c59478f7c10"},
+    {file = "cbor2-5.4.3-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c07975f956baddb8dfeca4966f1871fd2482cb36af24c461f763732a44675225"},
+    {file = "cbor2-5.4.3-cp37-cp37m-musllinux_1_1_aarch64.whl", hash = "sha256:9538ab1b4207e76ee02a52362d77e312921ec1dc75b6fb42182887d87d0ca53e"},
+    {file = "cbor2-5.4.3-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:cbca58220f52fd50d8985e4079e10c71196d538fb6685f157f608a29253409a4"},
+    {file = "cbor2-5.4.3-cp37-cp37m-win_amd64.whl", hash = "sha256:c617c7f94936d65ed9c8e99c6c03e3dc83313d69c6bfea810014ec658e9b1a9d"},
+    {file = "cbor2-5.4.3-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:70789805b9aebd215626188aa05bb09908ed51e3268d4db5ae6a08276efdbcb1"},
+    {file = "cbor2-5.4.3-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:0e4ae67a697c664b579b87c4ef9d60e26c146b95bff443a9a38abb16f6981ff0"},
+    {file = "cbor2-5.4.3-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ab6c934806759d453a9bb5318f2703c831e736be005ac35d5bd5cf2093ba57b1"},
+    {file = "cbor2-5.4.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:981b9ffc4f2947a0f030e71ce5eac31334bc81369dd57c6c1273c94c6cdb0b5a"},
+    {file = "cbor2-5.4.3-cp38-cp38-musllinux_1_1_aarch64.whl", hash = "sha256:cbe7cdeed26cd8ec2dcfed2b8876bc137ad8b9e0abb07aa5fb05770148a4b5c7"},
+    {file = "cbor2-5.4.3-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:6bc8c5606aa0ae510bdb3c7d987f92df39ef87d09e0f0588a4d1daffd3cb0453"},
+    {file = "cbor2-5.4.3-cp38-cp38-win_amd64.whl", hash = "sha256:5c50da4702ac5ca3a8e7cb9f34f62b4ea91bc81b76c2fba03888b366da299cd8"},
+    {file = "cbor2-5.4.3-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:37ae0ce5afe864d1a1c5b05becaf8aaca7b7131cb7b0b935d7e79b29fb1cea28"},
+    {file = "cbor2-5.4.3-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:2f30f7ef329ea6ec630ceabe5a539fed407b9c81e27e2322644e3efbbd1b2a76"},
+    {file = "cbor2-5.4.3-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d549abea7115c8a0d7c61a31a895c031f902a7b4c875f9efd8ce41e466baf83a"},
+    {file = "cbor2-5.4.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6fab0e00c28305db59f7005150447d08dd13da6a82695a2132c28beba590fd2c"},
+    {file = "cbor2-5.4.3-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:20291dad09cf9c4e5f434d376dd9d60f5ab5e066b308005f50e7c5e22e504214"},
+    {file = "cbor2-5.4.3-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:5aaf3406c9d661d11f87e792edb9a38561dba1441afba7fb883d6d963e67f32c"},
+    {file = "cbor2-5.4.3-cp39-cp39-win_amd64.whl", hash = "sha256:4e8590193fcbbb9477010ca0f094f6540a5e723965c90eea7a37edbe75f0ec4d"},
+    {file = "cbor2-5.4.3.tar.gz", hash = "sha256:62b863c5ee6ced4032afe948f3c1484f375550995d3b8498145237fe28e546c2"},
 ]
 certifi = [
     {file = "certifi-2022.9.24-py3-none-any.whl", hash = "sha256:90c1a32f1d68f940488354e36370f6cca89f0f106db09518524c88d6ed83f382"},
@@ -1927,6 +1982,10 @@ pure-eval = [
 py = [
     {file = "py-1.11.0-py2.py3-none-any.whl", hash = "sha256:607c53218732647dff4acdfcd50cb62615cedf612e72d1724fb1a0cc6405b378"},
     {file = "py-1.11.0.tar.gz", hash = "sha256:51c75c4126074b472f746a24399ad32f6053d1b34b68d2fa41e558e6f4a98719"},
+]
+py-dtn7 = [
+    {file = "py-dtn7-0.2.1a4.tar.gz", hash = "sha256:8957b2854449b5b32bdeebaf980f00b8adde1229a8547ea48cbc10401226c901"},
+    {file = "py_dtn7-0.2.1a4-py3-none-any.whl", hash = "sha256:e24faf27d3896df5d47383aeabf7378f76ebeb366b92d47ce5a7b28220d46c8b"},
 ]
 pycparser = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},

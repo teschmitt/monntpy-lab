@@ -452,18 +452,5 @@ done
 
 # for the next run, set compression flag to true
 sed -Ei 's/\"compress_body\"\: False/"compress_body": True/g' /app/moNNT.py/backend/dtn7sqlite/config.py
-zip="zip"
+zip="zlib"
 done
-
-# test speed of pure communication with dtnd by passing on backchannel data
-# for this, replace
-#
-# self._loop.run_until_complete(self._async_ws_data_handler(ws_data))
-#
-# with this:
-#
-# if isinstance(ws_data, bytes):
-#     self.logger.info("Removed spool entry")
-# return
-# # self._loop.run_until_complete(self._async_ws_data_handler(ws_data))
-

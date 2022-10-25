@@ -1,5 +1,6 @@
 results-*/
 *-results/
+multirun-results*
 experiment.log
 logs/
 stats/
