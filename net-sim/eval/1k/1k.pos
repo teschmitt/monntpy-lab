@@ -2,11 +2,14 @@ n1 50 50
 n2 400 400
 n3 750 50
 
-%delay 20
+%delay 5
 
 -- STEP
 n2 55 50
 
+-- STEP
+-- STEP
+-- STEP
 -- STEP
 n2 755 50
 

@@ -1,27 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<scenario name="/tmp/tmp82ttpc3d">
+<scenario name="/tmp/tmpeweb48yt">
   <networks>
-    <network id="4" name="wlan4" icon="" canvas="0" model="basic_range" type="WIRELESS_LAN">
+    <network id="4" name="wlan4" icon="" canvas="0" type="WIRELESS_LAN">
       <position x="168.0" y="83.0" lat="47.57866344877008" lon="-122.13081504907265" alt="2.0"/>
     </network>
   </networks>
   <devices>
     <device id="1" name="n1" icon="" canvas="0" type="host" class="" image="">
-      <position x="50.0" y="50.0" lat="47.577912024294704" lon="-122.13128217302041" alt="2.0"/>
+      <position x="50.0" y="50.0" lat="47.578863422821634" lon="-122.13187506110792" alt="2.0"/>
       <services>
         <service name="DefaultRoute"/>
         <service name="SSH"/>
       </services>
     </device>
     <device id="2" name="n2" icon="" canvas="0" type="host" class="" image="">
-      <position x="400.0" y="400.0" lat="47.57796656353088" lon="-122.12564075303614" alt="2.0"/>
-      <services>
-        <service name="DefaultRoute"/>
-        <service name="SSH"/>
-      </services>
-    </device>
-    <device id="3" name="n3" icon="" canvas="0" type="host" class="" image="">
-      <position x="750.0" y="50.0" lat="47.57554860282424" lon="-122.13121030779769" alt="2.0"/>
+      <position x="400.0" y="400.0" lat="47.576742447002935" lon="-122.1287309576135" alt="2.0"/>
       <services>
         <service name="DefaultRoute"/>
         <service name="SSH"/>
@@ -34,9 +27,6 @@
     </link>
     <link node1="4" node2="2">
       <iface2 id="0" name="eth0" mac="00:00:00:aa:00:01" ip4="10.0.0.21" ip4_mask="24" ip6="2001::15" ip6_mask="128"/>
-    </link>
-    <link node1="4" node2="3">
-      <iface2 id="0" name="eth0" mac="00:00:00:aa:00:02" ip4="10.0.0.22" ip4_mask="24" ip6="2001::16" ip6_mask="128"/>
     </link>
   </links>
   <mobility_configurations>
@@ -75,10 +65,10 @@
     <configuration name="ovs" value="0"/>
   </session_options>
   <session_metadata>
-    <configuration name="canvas" value="{&quot;gridlines&quot;: true, &quot;dimensions&quot;: [2000, 2000], &quot;canvases&quot;: [{&quot;id&quot;: 1, &quot;wallpaper&quot;: null, &quot;wallpaper_style&quot;: 1, &quot;fit_image&quot;: false}]}"/>
-    <configuration name="edges" value="[]"/>
     <configuration name="shapes" value="[]"/>
     <configuration name="hidden" value="[]"/>
+    <configuration name="canvas" value="{&quot;gridlines&quot;: true, &quot;dimensions&quot;: [2000, 2000], &quot;canvases&quot;: [{&quot;id&quot;: 1, &quot;wallpaper&quot;: null, &quot;wallpaper_style&quot;: 1, &quot;fit_image&quot;: false}]}"/>
+    <configuration name="edges" value="[]"/>
   </session_metadata>
   <default_services>
     <node type="mdr">
