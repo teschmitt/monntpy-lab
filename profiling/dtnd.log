@@ -1,0 +1,518 @@
+ 2022-11-06T11:17:25.357Z INFO  dtnd > starting dtnd
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Local Node ID: dtn://n1/
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Work Dir: "/home/thomas/thesis/monntpy-lab/profile"
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > DB Backend: mem
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Announcement Interval: 2s
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Janitor Interval: 10s
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Peer Timeout: 20s
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Web Port: 3000
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > IPv4: true
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > IPv6: false
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Generate Status Reports: false
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > RoutingAgent: epidemic
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > RoutingOptions: {}
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Adding CLA: MtcpConvergenceLayer
+ 2022-11-06T11:17:25.357Z INFO  dtn7::core         > Registered new application agent for EID: dtn://n1/
+ 2022-11-06T11:17:25.357Z INFO  dtn7::core         > Registered new application agent for EID: dtn://n1/mail/tu-darmstadt.de/monntpy
+ 2022-11-06T11:17:25.357Z INFO  dtn7::core         > Registered new application agent for EID: dtn://monntpy.eval/~news
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Starting convergency layers
+ 2022-11-06T11:17:25.357Z INFO  dtn7::dtnd::daemon > Setup mtcp:0.0.0.0:16162
+ 2022-11-06T11:17:25.357Z INFO  dtn7::ipnd::neighbour_discovery > Configured discovery destination: 224.0.0.26
+ 2022-11-06T11:17:25.357Z INFO  dtn7::ipnd::neighbour_discovery > Listening on 0.0.0.0:3003
+ 2022-11-06T11:17:25.359Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645358-0
+ 2022-11-06T11:17:25.359Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645358-0
+ 2022-11-06T11:17:25.359Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645358-0
+ 2022-11-06T11:17:25.359Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645358-0
+ 2022-11-06T11:17:25.359Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645358-0
+ 2022-11-06T11:17:25.360Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645359-0
+ 2022-11-06T11:17:25.360Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645359-0
+ 2022-11-06T11:17:25.360Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645359-0
+ 2022-11-06T11:17:25.360Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645359-0
+ 2022-11-06T11:17:25.360Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645359-0
+ 2022-11-06T11:17:25.361Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645360-0
+ 2022-11-06T11:17:25.361Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645360-0
+ 2022-11-06T11:17:25.361Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645360-0
+ 2022-11-06T11:17:25.361Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645360-0
+ 2022-11-06T11:17:25.361Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645360-0
+ 2022-11-06T11:17:25.362Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645362-0
+ 2022-11-06T11:17:25.362Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645362-0
+ 2022-11-06T11:17:25.362Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645362-0
+ 2022-11-06T11:17:25.362Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645362-0
+ 2022-11-06T11:17:25.362Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645362-0
+ 2022-11-06T11:17:25.363Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645363-0
+ 2022-11-06T11:17:25.363Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645363-0
+ 2022-11-06T11:17:25.363Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645363-0
+ 2022-11-06T11:17:25.363Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645363-0
+ 2022-11-06T11:17:25.363Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645363-0
+ 2022-11-06T11:17:25.364Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645364-0
+ 2022-11-06T11:17:25.364Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645364-0
+ 2022-11-06T11:17:25.364Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645364-0
+ 2022-11-06T11:17:25.364Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645364-0
+ 2022-11-06T11:17:25.364Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645364-0
+ 2022-11-06T11:17:25.365Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645365-0
+ 2022-11-06T11:17:25.365Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645365-0
+ 2022-11-06T11:17:25.365Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645365-0
+ 2022-11-06T11:17:25.365Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645365-0
+ 2022-11-06T11:17:25.365Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645365-0
+ 2022-11-06T11:17:25.366Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645366-0
+ 2022-11-06T11:17:25.366Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645366-0
+ 2022-11-06T11:17:25.366Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645366-0
+ 2022-11-06T11:17:25.366Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645366-0
+ 2022-11-06T11:17:25.366Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645366-0
+ 2022-11-06T11:17:25.368Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645367-0
+ 2022-11-06T11:17:25.368Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645367-0
+ 2022-11-06T11:17:25.368Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645367-0
+ 2022-11-06T11:17:25.368Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645367-0
+ 2022-11-06T11:17:25.368Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645367-0
+ 2022-11-06T11:17:25.369Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645368-0
+ 2022-11-06T11:17:25.369Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645368-0
+ 2022-11-06T11:17:25.369Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645368-0
+ 2022-11-06T11:17:25.369Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645368-0
+ 2022-11-06T11:17:25.369Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645368-0
+ 2022-11-06T11:17:25.370Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645370-0
+ 2022-11-06T11:17:25.370Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645370-0
+ 2022-11-06T11:17:25.370Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645370-0
+ 2022-11-06T11:17:25.370Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645370-0
+ 2022-11-06T11:17:25.370Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645370-0
+ 2022-11-06T11:17:25.371Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645371-0
+ 2022-11-06T11:17:25.371Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645371-0
+ 2022-11-06T11:17:25.371Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645371-0
+ 2022-11-06T11:17:25.371Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645371-0
+ 2022-11-06T11:17:25.371Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645371-0
+ 2022-11-06T11:17:25.373Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645372-0
+ 2022-11-06T11:17:25.373Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645372-0
+ 2022-11-06T11:17:25.373Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645372-0
+ 2022-11-06T11:17:25.373Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645372-0
+ 2022-11-06T11:17:25.373Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645372-0
+ 2022-11-06T11:17:25.374Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645374-0
+ 2022-11-06T11:17:25.374Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645374-0
+ 2022-11-06T11:17:25.374Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645374-0
+ 2022-11-06T11:17:25.374Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645374-0
+ 2022-11-06T11:17:25.374Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645374-0
+ 2022-11-06T11:17:25.375Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645375-0
+ 2022-11-06T11:17:25.375Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645375-0
+ 2022-11-06T11:17:25.375Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645375-0
+ 2022-11-06T11:17:25.375Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645375-0
+ 2022-11-06T11:17:25.375Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645375-0
+ 2022-11-06T11:17:25.377Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645377-0
+ 2022-11-06T11:17:25.377Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645377-0
+ 2022-11-06T11:17:25.377Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645377-0
+ 2022-11-06T11:17:25.377Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645377-0
+ 2022-11-06T11:17:25.377Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645377-0
+ 2022-11-06T11:17:25.379Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645378-0
+ 2022-11-06T11:17:25.379Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645378-0
+ 2022-11-06T11:17:25.379Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645378-0
+ 2022-11-06T11:17:25.379Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645378-0
+ 2022-11-06T11:17:25.379Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645378-0
+ 2022-11-06T11:17:25.380Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645380-0
+ 2022-11-06T11:17:25.380Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645380-0
+ 2022-11-06T11:17:25.380Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645380-0
+ 2022-11-06T11:17:25.380Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645380-0
+ 2022-11-06T11:17:25.380Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645380-0
+ 2022-11-06T11:17:25.382Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645381-0
+ 2022-11-06T11:17:25.382Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645381-0
+ 2022-11-06T11:17:25.382Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645381-0
+ 2022-11-06T11:17:25.382Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645381-0
+ 2022-11-06T11:17:25.382Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645381-0
+ 2022-11-06T11:17:25.383Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645383-0
+ 2022-11-06T11:17:25.384Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645383-0
+ 2022-11-06T11:17:25.384Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645383-0
+ 2022-11-06T11:17:25.384Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645383-0
+ 2022-11-06T11:17:25.384Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645383-0
+ 2022-11-06T11:17:25.385Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645385-0
+ 2022-11-06T11:17:25.385Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645385-0
+ 2022-11-06T11:17:25.385Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645385-0
+ 2022-11-06T11:17:25.385Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645385-0
+ 2022-11-06T11:17:25.385Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645385-0
+ 2022-11-06T11:17:25.387Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645386-0
+ 2022-11-06T11:17:25.387Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645386-0
+ 2022-11-06T11:17:25.387Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645386-0
+ 2022-11-06T11:17:25.387Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645386-0
+ 2022-11-06T11:17:25.387Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645386-0
+ 2022-11-06T11:17:25.388Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645388-0
+ 2022-11-06T11:17:25.388Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645388-0
+ 2022-11-06T11:17:25.388Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645388-0
+ 2022-11-06T11:17:25.388Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645388-0
+ 2022-11-06T11:17:25.388Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645388-0
+ 2022-11-06T11:17:25.390Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645390-0
+ 2022-11-06T11:17:25.390Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645390-0
+ 2022-11-06T11:17:25.390Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645390-0
+ 2022-11-06T11:17:25.390Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645390-0
+ 2022-11-06T11:17:25.390Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645390-0
+ 2022-11-06T11:17:25.392Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645391-0
+ 2022-11-06T11:17:25.392Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645391-0
+ 2022-11-06T11:17:25.392Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645391-0
+ 2022-11-06T11:17:25.392Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645391-0
+ 2022-11-06T11:17:25.392Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645391-0
+ 2022-11-06T11:17:25.394Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645393-0
+ 2022-11-06T11:17:25.394Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645393-0
+ 2022-11-06T11:17:25.394Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645393-0
+ 2022-11-06T11:17:25.394Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645393-0
+ 2022-11-06T11:17:25.394Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645393-0
+ 2022-11-06T11:17:25.395Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645395-0
+ 2022-11-06T11:17:25.395Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645395-0
+ 2022-11-06T11:17:25.395Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645395-0
+ 2022-11-06T11:17:25.395Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645395-0
+ 2022-11-06T11:17:25.395Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645395-0
+ 2022-11-06T11:17:25.397Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645397-0
+ 2022-11-06T11:17:25.397Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645397-0
+ 2022-11-06T11:17:25.397Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645397-0
+ 2022-11-06T11:17:25.397Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645397-0
+ 2022-11-06T11:17:25.397Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645397-0
+ 2022-11-06T11:17:25.399Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645398-0
+ 2022-11-06T11:17:25.399Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645398-0
+ 2022-11-06T11:17:25.399Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645398-0
+ 2022-11-06T11:17:25.399Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645398-0
+ 2022-11-06T11:17:25.399Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645398-0
+ 2022-11-06T11:17:25.400Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645400-0
+ 2022-11-06T11:17:25.400Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645400-0
+ 2022-11-06T11:17:25.400Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645400-0
+ 2022-11-06T11:17:25.400Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645400-0
+ 2022-11-06T11:17:25.400Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645400-0
+ 2022-11-06T11:17:25.402Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645402-0
+ 2022-11-06T11:17:25.402Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645402-0
+ 2022-11-06T11:17:25.402Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645402-0
+ 2022-11-06T11:17:25.402Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645402-0
+ 2022-11-06T11:17:25.402Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645402-0
+ 2022-11-06T11:17:25.404Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645403-0
+ 2022-11-06T11:17:25.404Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645403-0
+ 2022-11-06T11:17:25.404Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645403-0
+ 2022-11-06T11:17:25.404Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645403-0
+ 2022-11-06T11:17:25.404Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645403-0
+ 2022-11-06T11:17:25.405Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645405-0
+ 2022-11-06T11:17:25.405Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645405-0
+ 2022-11-06T11:17:25.405Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645405-0
+ 2022-11-06T11:17:25.405Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645405-0
+ 2022-11-06T11:17:25.405Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645405-0
+ 2022-11-06T11:17:25.407Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645407-0
+ 2022-11-06T11:17:25.407Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645407-0
+ 2022-11-06T11:17:25.407Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645407-0
+ 2022-11-06T11:17:25.407Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645407-0
+ 2022-11-06T11:17:25.407Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645407-0
+ 2022-11-06T11:17:25.409Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645408-0
+ 2022-11-06T11:17:25.409Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645408-0
+ 2022-11-06T11:17:25.409Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645408-0
+ 2022-11-06T11:17:25.409Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645408-0
+ 2022-11-06T11:17:25.409Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645408-0
+ 2022-11-06T11:17:25.410Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645410-0
+ 2022-11-06T11:17:25.410Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645410-0
+ 2022-11-06T11:17:25.410Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645410-0
+ 2022-11-06T11:17:25.410Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645410-0
+ 2022-11-06T11:17:25.410Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645410-0
+ 2022-11-06T11:17:25.412Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645412-0
+ 2022-11-06T11:17:25.412Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645412-0
+ 2022-11-06T11:17:25.412Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645412-0
+ 2022-11-06T11:17:25.412Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645412-0
+ 2022-11-06T11:17:25.412Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645412-0
+ 2022-11-06T11:17:25.414Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645413-0
+ 2022-11-06T11:17:25.414Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645413-0
+ 2022-11-06T11:17:25.414Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645413-0
+ 2022-11-06T11:17:25.414Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645413-0
+ 2022-11-06T11:17:25.414Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645413-0
+ 2022-11-06T11:17:25.416Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645416-0
+ 2022-11-06T11:17:25.416Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645416-0
+ 2022-11-06T11:17:25.416Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645416-0
+ 2022-11-06T11:17:25.416Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645416-0
+ 2022-11-06T11:17:25.416Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645416-0
+ 2022-11-06T11:17:25.418Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645418-0
+ 2022-11-06T11:17:25.418Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645418-0
+ 2022-11-06T11:17:25.418Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645418-0
+ 2022-11-06T11:17:25.418Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645418-0
+ 2022-11-06T11:17:25.418Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645418-0
+ 2022-11-06T11:17:25.420Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645420-0
+ 2022-11-06T11:17:25.420Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645420-0
+ 2022-11-06T11:17:25.420Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645420-0
+ 2022-11-06T11:17:25.420Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645420-0
+ 2022-11-06T11:17:25.420Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645420-0
+ 2022-11-06T11:17:25.422Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645422-0
+ 2022-11-06T11:17:25.422Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645422-0
+ 2022-11-06T11:17:25.422Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645422-0
+ 2022-11-06T11:17:25.422Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645422-0
+ 2022-11-06T11:17:25.422Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645422-0
+ 2022-11-06T11:17:25.424Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645423-0
+ 2022-11-06T11:17:25.424Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645423-0
+ 2022-11-06T11:17:25.424Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645423-0
+ 2022-11-06T11:17:25.424Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645423-0
+ 2022-11-06T11:17:25.424Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645423-0
+ 2022-11-06T11:17:25.426Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645425-0
+ 2022-11-06T11:17:25.426Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645425-0
+ 2022-11-06T11:17:25.426Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645425-0
+ 2022-11-06T11:17:25.426Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645425-0
+ 2022-11-06T11:17:25.426Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645425-0
+ 2022-11-06T11:17:25.427Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645427-0
+ 2022-11-06T11:17:25.427Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645427-0
+ 2022-11-06T11:17:25.427Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645427-0
+ 2022-11-06T11:17:25.427Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645427-0
+ 2022-11-06T11:17:25.428Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645427-0
+ 2022-11-06T11:17:25.429Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645429-0
+ 2022-11-06T11:17:25.429Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645429-0
+ 2022-11-06T11:17:25.429Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645429-0
+ 2022-11-06T11:17:25.429Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645429-0
+ 2022-11-06T11:17:25.429Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645429-0
+ 2022-11-06T11:17:25.431Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645431-0
+ 2022-11-06T11:17:25.431Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645431-0
+ 2022-11-06T11:17:25.431Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645431-0
+ 2022-11-06T11:17:25.431Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645431-0
+ 2022-11-06T11:17:25.431Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645431-0
+ 2022-11-06T11:17:25.433Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645433-0
+ 2022-11-06T11:17:25.433Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645433-0
+ 2022-11-06T11:17:25.433Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645433-0
+ 2022-11-06T11:17:25.433Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645433-0
+ 2022-11-06T11:17:25.433Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645433-0
+ 2022-11-06T11:17:25.435Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645435-0
+ 2022-11-06T11:17:25.435Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645435-0
+ 2022-11-06T11:17:25.435Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645435-0
+ 2022-11-06T11:17:25.435Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645435-0
+ 2022-11-06T11:17:25.435Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645435-0
+ 2022-11-06T11:17:25.437Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645437-0
+ 2022-11-06T11:17:25.437Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645437-0
+ 2022-11-06T11:17:25.437Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645437-0
+ 2022-11-06T11:17:25.437Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645437-0
+ 2022-11-06T11:17:25.437Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645437-0
+ 2022-11-06T11:17:25.439Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645439-0
+ 2022-11-06T11:17:25.439Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645439-0
+ 2022-11-06T11:17:25.439Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645439-0
+ 2022-11-06T11:17:25.439Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645439-0
+ 2022-11-06T11:17:25.439Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645439-0
+ 2022-11-06T11:17:25.441Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645441-0
+ 2022-11-06T11:17:25.441Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645441-0
+ 2022-11-06T11:17:25.441Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645441-0
+ 2022-11-06T11:17:25.441Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645441-0
+ 2022-11-06T11:17:25.441Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645441-0
+ 2022-11-06T11:17:25.443Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645443-0
+ 2022-11-06T11:17:25.443Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645443-0
+ 2022-11-06T11:17:25.443Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645443-0
+ 2022-11-06T11:17:25.443Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645443-0
+ 2022-11-06T11:17:25.443Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645443-0
+ 2022-11-06T11:17:25.445Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645445-0
+ 2022-11-06T11:17:25.445Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645445-0
+ 2022-11-06T11:17:25.445Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645445-0
+ 2022-11-06T11:17:25.445Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645445-0
+ 2022-11-06T11:17:25.445Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645445-0
+ 2022-11-06T11:17:25.447Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645446-0
+ 2022-11-06T11:17:25.447Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645446-0
+ 2022-11-06T11:17:25.447Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645446-0
+ 2022-11-06T11:17:25.447Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645446-0
+ 2022-11-06T11:17:25.447Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645446-0
+ 2022-11-06T11:17:25.449Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645448-0
+ 2022-11-06T11:17:25.449Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645448-0
+ 2022-11-06T11:17:25.449Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645448-0
+ 2022-11-06T11:17:25.449Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645448-0
+ 2022-11-06T11:17:25.449Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645448-0
+ 2022-11-06T11:17:25.451Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645450-0
+ 2022-11-06T11:17:25.451Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645450-0
+ 2022-11-06T11:17:25.451Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645450-0
+ 2022-11-06T11:17:25.451Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645450-0
+ 2022-11-06T11:17:25.451Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645450-0
+ 2022-11-06T11:17:25.453Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645452-0
+ 2022-11-06T11:17:25.453Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645452-0
+ 2022-11-06T11:17:25.453Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645452-0
+ 2022-11-06T11:17:25.453Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645452-0
+ 2022-11-06T11:17:25.453Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645452-0
+ 2022-11-06T11:17:25.454Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645454-0
+ 2022-11-06T11:17:25.454Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645454-0
+ 2022-11-06T11:17:25.455Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645454-0
+ 2022-11-06T11:17:25.455Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645454-0
+ 2022-11-06T11:17:25.455Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645454-0
+ 2022-11-06T11:17:25.457Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645456-0
+ 2022-11-06T11:17:25.457Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645456-0
+ 2022-11-06T11:17:25.457Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645456-0
+ 2022-11-06T11:17:25.457Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645456-0
+ 2022-11-06T11:17:25.457Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645456-0
+ 2022-11-06T11:17:25.459Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645458-0
+ 2022-11-06T11:17:25.459Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645458-0
+ 2022-11-06T11:17:25.459Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645458-0
+ 2022-11-06T11:17:25.459Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645458-0
+ 2022-11-06T11:17:25.459Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645458-0
+ 2022-11-06T11:17:25.461Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645460-0
+ 2022-11-06T11:17:25.461Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645460-0
+ 2022-11-06T11:17:25.461Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645460-0
+ 2022-11-06T11:17:25.461Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645460-0
+ 2022-11-06T11:17:25.461Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645460-0
+ 2022-11-06T11:17:25.462Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645462-0
+ 2022-11-06T11:17:25.462Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645462-0
+ 2022-11-06T11:17:25.462Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645462-0
+ 2022-11-06T11:17:25.462Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645462-0
+ 2022-11-06T11:17:25.462Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645462-0
+ 2022-11-06T11:17:25.464Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645464-0
+ 2022-11-06T11:17:25.464Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645464-0
+ 2022-11-06T11:17:25.464Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645464-0
+ 2022-11-06T11:17:25.464Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645464-0
+ 2022-11-06T11:17:25.464Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645464-0
+ 2022-11-06T11:17:25.466Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645466-0
+ 2022-11-06T11:17:25.466Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645466-0
+ 2022-11-06T11:17:25.466Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645466-0
+ 2022-11-06T11:17:25.466Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645466-0
+ 2022-11-06T11:17:25.466Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645466-0
+ 2022-11-06T11:17:25.468Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645468-0
+ 2022-11-06T11:17:25.468Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645468-0
+ 2022-11-06T11:17:25.468Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645468-0
+ 2022-11-06T11:17:25.468Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645468-0
+ 2022-11-06T11:17:25.468Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645468-0
+ 2022-11-06T11:17:25.470Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645469-0
+ 2022-11-06T11:17:25.470Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645469-0
+ 2022-11-06T11:17:25.470Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645469-0
+ 2022-11-06T11:17:25.470Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645469-0
+ 2022-11-06T11:17:25.470Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645469-0
+ 2022-11-06T11:17:25.472Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645471-0
+ 2022-11-06T11:17:25.472Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645471-0
+ 2022-11-06T11:17:25.472Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645471-0
+ 2022-11-06T11:17:25.472Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645471-0
+ 2022-11-06T11:17:25.472Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645471-0
+ 2022-11-06T11:17:25.474Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645473-0
+ 2022-11-06T11:17:25.474Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645473-0
+ 2022-11-06T11:17:25.474Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645473-0
+ 2022-11-06T11:17:25.474Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645473-0
+ 2022-11-06T11:17:25.474Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645473-0
+ 2022-11-06T11:17:25.476Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645475-0
+ 2022-11-06T11:17:25.476Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645475-0
+ 2022-11-06T11:17:25.476Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645475-0
+ 2022-11-06T11:17:25.476Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645475-0
+ 2022-11-06T11:17:25.476Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645475-0
+ 2022-11-06T11:17:25.478Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645477-0
+ 2022-11-06T11:17:25.478Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645477-0
+ 2022-11-06T11:17:25.478Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645477-0
+ 2022-11-06T11:17:25.478Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645477-0
+ 2022-11-06T11:17:25.478Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645477-0
+ 2022-11-06T11:17:25.480Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645479-0
+ 2022-11-06T11:17:25.480Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645479-0
+ 2022-11-06T11:17:25.480Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645479-0
+ 2022-11-06T11:17:25.480Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645479-0
+ 2022-11-06T11:17:25.480Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645479-0
+ 2022-11-06T11:17:25.482Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645481-0
+ 2022-11-06T11:17:25.482Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645481-0
+ 2022-11-06T11:17:25.482Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645481-0
+ 2022-11-06T11:17:25.482Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645481-0
+ 2022-11-06T11:17:25.482Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645481-0
+ 2022-11-06T11:17:25.484Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645483-0
+ 2022-11-06T11:17:25.484Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645483-0
+ 2022-11-06T11:17:25.484Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645483-0
+ 2022-11-06T11:17:25.484Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645483-0
+ 2022-11-06T11:17:25.484Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645483-0
+ 2022-11-06T11:17:25.485Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645485-0
+ 2022-11-06T11:17:25.485Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645485-0
+ 2022-11-06T11:17:25.485Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645485-0
+ 2022-11-06T11:17:25.485Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645485-0
+ 2022-11-06T11:17:25.485Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645485-0
+ 2022-11-06T11:17:25.487Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645487-0
+ 2022-11-06T11:17:25.487Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645487-0
+ 2022-11-06T11:17:25.487Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645487-0
+ 2022-11-06T11:17:25.487Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645487-0
+ 2022-11-06T11:17:25.487Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645487-0
+ 2022-11-06T11:17:25.489Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645489-0
+ 2022-11-06T11:17:25.489Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645489-0
+ 2022-11-06T11:17:25.489Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645489-0
+ 2022-11-06T11:17:25.489Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645489-0
+ 2022-11-06T11:17:25.489Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645489-0
+ 2022-11-06T11:17:25.491Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645490-0
+ 2022-11-06T11:17:25.491Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645490-0
+ 2022-11-06T11:17:25.491Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645490-0
+ 2022-11-06T11:17:25.491Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645490-0
+ 2022-11-06T11:17:25.491Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645490-0
+ 2022-11-06T11:17:25.493Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645492-0
+ 2022-11-06T11:17:25.493Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645492-0
+ 2022-11-06T11:17:25.493Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645492-0
+ 2022-11-06T11:17:25.493Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645492-0
+ 2022-11-06T11:17:25.493Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645492-0
+ 2022-11-06T11:17:25.495Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645494-0
+ 2022-11-06T11:17:25.495Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645494-0
+ 2022-11-06T11:17:25.495Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645494-0
+ 2022-11-06T11:17:25.495Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645494-0
+ 2022-11-06T11:17:25.495Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645494-0
+ 2022-11-06T11:17:25.497Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645496-0
+ 2022-11-06T11:17:25.497Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645496-0
+ 2022-11-06T11:17:25.497Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645496-0
+ 2022-11-06T11:17:25.497Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645496-0
+ 2022-11-06T11:17:25.497Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645496-0
+ 2022-11-06T11:17:25.499Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645498-0
+ 2022-11-06T11:17:25.499Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645498-0
+ 2022-11-06T11:17:25.499Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645498-0
+ 2022-11-06T11:17:25.499Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645498-0
+ 2022-11-06T11:17:25.499Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645498-0
+ 2022-11-06T11:17:25.501Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645500-0
+ 2022-11-06T11:17:25.501Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645500-0
+ 2022-11-06T11:17:25.501Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645500-0
+ 2022-11-06T11:17:25.501Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645500-0
+ 2022-11-06T11:17:25.501Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645500-0
+ 2022-11-06T11:17:25.502Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645502-0
+ 2022-11-06T11:17:25.502Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645502-0
+ 2022-11-06T11:17:25.502Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645502-0
+ 2022-11-06T11:17:25.502Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645502-0
+ 2022-11-06T11:17:25.503Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645502-0
+ 2022-11-06T11:17:25.504Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645504-0
+ 2022-11-06T11:17:25.504Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645504-0
+ 2022-11-06T11:17:25.504Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645504-0
+ 2022-11-06T11:17:25.504Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645504-0
+ 2022-11-06T11:17:25.504Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645504-0
+ 2022-11-06T11:17:25.506Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645506-0
+ 2022-11-06T11:17:25.506Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645506-0
+ 2022-11-06T11:17:25.506Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645506-0
+ 2022-11-06T11:17:25.506Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645506-0
+ 2022-11-06T11:17:25.506Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645506-0
+ 2022-11-06T11:17:25.508Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645508-0
+ 2022-11-06T11:17:25.508Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645508-0
+ 2022-11-06T11:17:25.508Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645508-0
+ 2022-11-06T11:17:25.508Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645508-0
+ 2022-11-06T11:17:25.508Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645508-0
+ 2022-11-06T11:17:25.510Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645510-0
+ 2022-11-06T11:17:25.510Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645510-0
+ 2022-11-06T11:17:25.510Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645510-0
+ 2022-11-06T11:17:25.510Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645510-0
+ 2022-11-06T11:17:25.510Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645510-0
+ 2022-11-06T11:17:25.512Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645512-0
+ 2022-11-06T11:17:25.512Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645512-0
+ 2022-11-06T11:17:25.512Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645512-0
+ 2022-11-06T11:17:25.512Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645512-0
+ 2022-11-06T11:17:25.512Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645512-0
+ 2022-11-06T11:17:25.514Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645514-0
+ 2022-11-06T11:17:25.514Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645514-0
+ 2022-11-06T11:17:25.514Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645514-0
+ 2022-11-06T11:17:25.514Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645514-0
+ 2022-11-06T11:17:25.514Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645514-0
+ 2022-11-06T11:17:25.516Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645516-0
+ 2022-11-06T11:17:25.516Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645516-0
+ 2022-11-06T11:17:25.516Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645516-0
+ 2022-11-06T11:17:25.516Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645516-0
+ 2022-11-06T11:17:25.516Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645516-0
+ 2022-11-06T11:17:25.518Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645518-0
+ 2022-11-06T11:17:25.518Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645518-0
+ 2022-11-06T11:17:25.518Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645518-0
+ 2022-11-06T11:17:25.518Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645518-0
+ 2022-11-06T11:17:25.518Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645518-0
+ 2022-11-06T11:17:25.520Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645520-0
+ 2022-11-06T11:17:25.520Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645520-0
+ 2022-11-06T11:17:25.520Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645520-0
+ 2022-11-06T11:17:25.520Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645520-0
+ 2022-11-06T11:17:25.520Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645520-0
+ 2022-11-06T11:17:25.522Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645522-0
+ 2022-11-06T11:17:25.522Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645522-0
+ 2022-11-06T11:17:25.522Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645522-0
+ 2022-11-06T11:17:25.522Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645522-0
+ 2022-11-06T11:17:25.522Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645522-0
+ 2022-11-06T11:17:25.524Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645523-0
+ 2022-11-06T11:17:25.524Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645523-0
+ 2022-11-06T11:17:25.524Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645523-0
+ 2022-11-06T11:17:25.524Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645523-0
+ 2022-11-06T11:17:25.524Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645523-0
+ 2022-11-06T11:17:25.526Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645525-0
+ 2022-11-06T11:17:25.526Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645525-0
+ 2022-11-06T11:17:25.526Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645525-0
+ 2022-11-06T11:17:25.526Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645525-0
+ 2022-11-06T11:17:25.526Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645525-0
+ 2022-11-06T11:17:25.528Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645527-0
+ 2022-11-06T11:17:25.528Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645527-0
+ 2022-11-06T11:17:25.528Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645527-0
+ 2022-11-06T11:17:25.528Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645527-0
+ 2022-11-06T11:17:25.528Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645527-0
+ 2022-11-06T11:17:25.530Z INFO  dtn7::core::processing          > Transmission of bundle requested: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645529-0
+ 2022-11-06T11:17:25.530Z INFO  dtn7::core::processing          > Dispatching bundle: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645529-0
+ 2022-11-06T11:17:25.530Z INFO  dtn7::core::processing          > Received bundle for local delivery: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645529-0
+ 2022-11-06T11:17:25.530Z INFO  dtn7::core::processing          > Delivering dtn://n1/mail/tu-darmstadt.de/monntpy-721048645529-0
+ 2022-11-06T11:17:25.530Z INFO  dtn7::core::processing          > Add forwarding constraint again as bundle is non-local destination: dtn://n1/mail/tu-darmstadt.de/monntpy-721048645529-0
+ 2022-11-06T11:18:52.909Z INFO  dtn7::core                      > Registered new application agent for EID: dtn://monntpy.dev/~news
+ 2022-11-06T11:18:52.911Z INFO  dtn7::core                      > Registered new application agent for EID: dtn://monntpy.offtopic/~news
+ 2022-11-06T11:18:52.913Z INFO  dtn7::core                      > Registered new application agent for EID: dtn://monntpy.users.jlu-giessen/~news
+ 2022-11-06T11:18:52.915Z INFO  dtn7::core                      > Registered new application agent for EID: dtn://monntpy.users.uni-frankfurt/~news
+ 2022-11-06T11:18:52.917Z INFO  dtn7::core                      > Application agent already registered for EID: dtn://monntpy.eval/~news
+ 2022-11-06T11:18:52.919Z INFO  dtn7::core                      > Registered new application agent for EID: dtn://monntpy.users.tu-darmstadt/~news
+ 2022-11-06T11:18:52.921Z INFO  dtn7::core                      > Application agent already registered for EID: dtn://n1/mail/tu-darmstadt.de/monntpy
