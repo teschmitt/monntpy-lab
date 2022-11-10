@@ -1,4 +1,4 @@
-# Performance Text Suite
+# moNNT.py Performance Test Suite
 
 
 ```shell
@@ -21,7 +21,7 @@ OPTIONS:
 ## Build the container
 
 ```shell
-$ docker build . --tag monntpy-bench
+$ docker build . --tag monntpy-perf
 ```
 
 ## Generating new CBOR Data

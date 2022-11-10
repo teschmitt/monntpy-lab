@@ -37,6 +37,10 @@ get_count() {
     echo $(rg --count "$1" "$2")
 }
 
+set_compress() {
+    sed -Ei "s/\"compress_body\"\: (True|False)/\"compress_body\": $1/g" /app/moNNT.py/backend/dtn7sqlite/config.py
+}
+
 start_dtnd() {
     echo "Starting dtnd ..."
     # start the dtnd with the defined settings
@@ -291,6 +295,8 @@ ts=$(date +%s)
 logs_dir="/shared/logs"
 # if run_mode is "experiments", we will save stats here
 stats_dir="/shared/stats"
+mkdir -p logs_dir
+mkdir -p stats_dir
 
 dtd_ingest_log_path="$logs_dir/dtnd-ingest-$ts.log"
 dtd_ingest_stats_path="$stats_dir/dtnd-ingest-$ts.csv"
@@ -312,13 +318,13 @@ monntpy_allonline_stats_path="$stats_dir/monntpy-allonline-$ts.csv"
 # are executed on this number of articles.
 if [ $run_mode == "experiments" ]; then
     csv_header="num_articles;start;stop;elapsed;rate;compression"
-    echo $csv_header >> "$monntpy_ingest_stats_path"
-    echo $csv_header >> "$dtnd_spool_stats_path"
-    echo $csv_header >> "$monntpy_spool_stats_path"
-    echo $csv_header >> "$monntpy_allonline_stats_path"
+    echo $csv_header > "$monntpy_ingest_stats_path"
+    echo $csv_header > "$dtnd_spool_stats_path"
+    echo $csv_header > "$monntpy_spool_stats_path"
+    echo $csv_header > "$monntpy_allonline_stats_path"
     
-    experiments=( 10 100 1000 10000 )
-    experiment_runs=( 50 30 15 10 )
+    experiments=( 100 1000 )
+    experiment_runs=( 20 10 )
     num_experiments=${#experiments[@]}
     echo "Experiment mode. Will do $num_experiments experiments."
 else
@@ -334,7 +340,7 @@ sed -Ei 's/level=\S*/level=INFO/g' /app/moNNT.py/logging_conf.ini
 # run all experiments twice, once without, once with zip
 if [ $run_mode == "experiments" ]; then zipstop=2; else zipstop=1; fi
 zip="none"
-sed -Ei 's/\"compress_body\"\: (True|False)/"compress_body": False/g' /app/moNNT.py/backend/dtn7sqlite/config.py
+set_compress False
 for (( zipnozip=0; zipnozip < zipstop; zipnozip++ )); do
 
 echo
@@ -452,6 +458,6 @@ done
 
 
 # for the next run, set compression flag to true
-sed -Ei 's/\"compress_body\"\: (True|False)/"compress_body": True/g' /app/moNNT.py/backend/dtn7sqlite/config.py
+set_compress True
 zip="zlib"
 done
