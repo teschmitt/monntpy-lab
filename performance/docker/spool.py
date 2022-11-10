@@ -60,7 +60,7 @@ async def main():
     await post_articles(
         server=nntplib.NNTP(host="127.0.0.1", port=1190),
         art_num=NUM_ARTICLES,
-        art_length="short",
+        art_length="med",
         ident_str="Spool performance",
     )
 

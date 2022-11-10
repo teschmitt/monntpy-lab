@@ -95,8 +95,8 @@ do_ingest() {
         results="$real_count;$start_time;$stop_time;$elapsed;$msgs_per_sec;$zip"
         echo $results >> "$monntpy_ingest_stats_path"
         # clean up environment
-        rm -rf $monntpy_ingest_log_path
-        rm -rf $dtnd_ingest_log_path
+        # rm -rf $monntpy_ingest_log_path
+        # rm -rf $dtnd_ingest_log_path
     else
         printf "$White"
         echo 
@@ -191,8 +191,8 @@ do_spool() {
         results="$real_count;$start_time;$stop_time;$elapsed;$msgs_per_sec;$zip"
         echo $results >> "$monntpy_spool_stats_path"
         rm -rf "$db_path/db.sqlite3"
-        rm -rf $dtnd_spool_log_path
-        rm -rf $monntpy_spool_log_path
+        # rm -rf $dtnd_spool_log_path
+        # rm -rf $monntpy_spool_log_path
     else
         printf "$White"
         echo 
@@ -249,8 +249,8 @@ do_sequential() {
         results="$real_count;$start_time;$stop_time;$elapsed;$msgs_per_sec;$zip"
         echo $results >> "$monntpy_allonline_stats_path"
         rm -rf "$db_path/db.sqlite3"
-        rm -rf $dtnd_allonline_log_path
-        rm -rf $monntpy_allonline_log_path
+        # rm -rf $dtnd_allonline_log_path
+        # rm -rf $monntpy_allonline_log_path
     else
         echo
         printf "$White"
@@ -334,6 +334,7 @@ sed -Ei 's/level=\S*/level=INFO/g' /app/moNNT.py/logging_conf.ini
 # run all experiments twice, once without, once with zip
 if [ $run_mode == "experiments" ]; then zipstop=2; else zipstop=1; fi
 zip="none"
+sed -Ei 's/\"compress_body\"\: (True|False)/"compress_body": False/g' /app/moNNT.py/backend/dtn7sqlite/config.py
 for (( zipnozip=0; zipnozip < zipstop; zipnozip++ )); do
 
 echo
@@ -451,6 +452,6 @@ done
 
 
 # for the next run, set compression flag to true
-sed -Ei 's/\"compress_body\"\: False/"compress_body": True/g' /app/moNNT.py/backend/dtn7sqlite/config.py
+sed -Ei 's/\"compress_body\"\: (True|False)/"compress_body": True/g' /app/moNNT.py/backend/dtn7sqlite/config.py
 zip="zlib"
 done
