@@ -23,7 +23,6 @@ config = {
             "port": 3000,
             "rest_path": "",
             "ws_path": "/ws",
-            "multi_user": False,
         },
         "backoff": {
             "initial_wait": 0.1,
