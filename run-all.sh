@@ -33,4 +33,4 @@ done
 
 
 cd ..
-nohup poetry run jupyter-lab EvalResults.ipynb > /dev/null 2>&1
+poetry run jupyter-lab EvalResults.ipynb

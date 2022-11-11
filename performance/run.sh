@@ -26,6 +26,9 @@ db_path="/app/moNNT.py"
 run_mode="single"
 cmd=$0
 
+script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+mkdir -p "$script_dir/logs"
+mkdir -p "$script_dir/stats"
 
 while [[ "$#" -gt 0 ]]
 do case $1 in

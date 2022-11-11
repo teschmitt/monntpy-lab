@@ -13,6 +13,8 @@ node_name="n1"
 mail_endpoint="mail/tu-darmstadt.de/monntpy"
 group_name="monntpy.eval"
 
+experiments=( 10 100 1000 10000 )
+experiment_runs=( 40 20 10 5 )
 
 #################################### BEGIN FUNCTION DEFINITIONS ####################################
 
@@ -325,8 +327,6 @@ if [ $run_mode == "experiments" ]; then
     echo $csv_header > "$monntpy_spool_stats_path"
     echo $csv_header > "$monntpy_allonline_stats_path"
     
-    experiments=( 10 100 1000 10000 )
-    experiment_runs=( 40 20 10 3 )
     num_experiments=${#experiments[@]}
     echo "Experiment mode. Will do $num_experiments experiments."
 else

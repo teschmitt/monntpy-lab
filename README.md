@@ -56,15 +56,15 @@ Two smaller evaluations are available in two further notebooks:
 
 ### Notes on reducing evaluation runtime
 
-In `performance/perf_eval.sh` starting at line 320, you can adjust the number of articles in each batch and the number of times that experiment is run. These can be reduced, e.g. to run two experiments, one with 100 articles 20 times and one with 1000 articles 10 times:
+In `performance/perf_eval.sh` starting at line 16, you can adjust the number of articles in each batch and the number of times that experiment is run. These can be reduced, e.g. to run two experiments, one with 10 articles 5 times and one with 100 articles 2 times:
 
 ```
-experiments=( 100 1000 )
-experiment_runs=( 10 5 )
+experiments=( 10 1000 )
+experiment_runs=( 5 2 )
 ```
 
 This has to be done *before* building the Docker containers.
 
 Both experiments will be carried out once with, once without compression.
 
-To reduce the runtime of the **Network Simulation** evaluation, simply pass a smaller number as an argument when calling `./run-all.sh`, e.g. `run-all.sh 5`.
+To reduce the runtime of the **Network Simulation** evaluation, simply pass a smaller number as an argument when calling `./run-all.sh`, e.g. `run-all.sh 3`.
