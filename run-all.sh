@@ -10,7 +10,7 @@ num_runs=10
 #echo "Run performance and network-simulation tests with moNNT.py and dtnd"
 
 cd performance
-# ./run.sh --run-mode experiments
+./run.sh --run-mode experiments
 
 cd ../net-sim
 scenarios=$(ls -d eval/*)
