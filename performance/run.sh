@@ -59,5 +59,5 @@ docker run \
     --env DB_PATH=$db_path \
     --env RUN_MODE=$run_mode \
     --volume $(pwd):/shared \
-    --name monntpy-perf \
+    --name monntpy-performance \
     monntpy-perf

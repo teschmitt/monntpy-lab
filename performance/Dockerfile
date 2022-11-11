@@ -14,7 +14,7 @@ COPY docker /docker
 RUN apt update                                                      && \
     apt install -y bc git ripgrep psmisc                            && \
     rm -rf /var/lib/apt/lists/*                                     && \
-    pip install poetry==1.2.0                                       && \
+    pip install poetry==1.2.2                                       && \
     mkdir -p /app                                                   && \
     mkdir /shared                                                   && \
     cd /docker                                                      && \
@@ -24,6 +24,7 @@ RUN apt update                                                      && \
     cd /app                                                         && \
     git clone https://github.com/teschmitt/moNNT.py.git             && \
     cd /app/moNNT.py                                                && \
+    git checkout v0.5.0                                             && \
     poetry config virtualenvs.create false                          && \
     poetry install --no-interaction --no-ansi --no-root --only main && \
     cp /docker/monntpy-config.py /app/moNNT.py/backend/dtn7sqlite/config.py

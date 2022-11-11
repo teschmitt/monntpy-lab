@@ -62,11 +62,13 @@ start_monntpy() {
 }
 
 kill_dtn () {
-    kill $dtnd_pid
-    if [ $? -ne 0 ]; then
-        killall dtnd
-        sleep 10    # sometimes port 3000 needs time to be freed
-    fi
+    killall dtnd
+    res=$?
+    while [ $res -ne 0 ]; do
+        echo "dtnd not found, trying again"
+        sleep 1    # sometimes port 3000 needs time to be freed
+        killall dtnd  # really make sure this time
+    done
 }
 
 do_ingest() {
@@ -323,8 +325,8 @@ if [ $run_mode == "experiments" ]; then
     echo $csv_header > "$monntpy_spool_stats_path"
     echo $csv_header > "$monntpy_allonline_stats_path"
     
-    experiments=( 100 1000 )
-    experiment_runs=( 20 10 )
+    experiments=( 10 100 1000 10000 )
+    experiment_runs=( 40 20 10 3 )
     num_experiments=${#experiments[@]}
     echo "Experiment mode. Will do $num_experiments experiments."
 else
@@ -390,12 +392,16 @@ for (( ex=0; ex < $num_experiments; ex++ )); do
     start_dtnd "$dtd_ingest_log_path"
     sleep 1
 
-
+    if [ $zip == "none" ]; then
+        ingest_file="/shared/ingest.cbor"
+    else
+        ingest_file="/shared/ingest_zlib.cbor"
+    fi
     echo "Sending articles to DTNd store ..."
     for (( i=1; i <= $num_articles; i++ )); do
         dtnsend --sender "dtn://$node_name/$mail_endpoint" \
                 --receiver "dtn://$group_name/~news" \
-                /shared/ingest.cbor > /dev/null 2>&1
+                $ingest_file > /dev/null 2>&1
     done
     echo "Finished filling $num_articles messages into dtnd in $(echo "$(date +%s) - $ts" | bc) seconds."
 

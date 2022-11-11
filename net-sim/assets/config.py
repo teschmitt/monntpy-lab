@@ -18,7 +18,7 @@ HOSTNAME = subprocess.run(["hostname"], stdout=subprocess.PIPE).stdout.decode().
 config = {
         "backend": {"db_url": f"sqlite://{SESSION_DIR}/{HOSTNAME}.conf/db.sqlite3"},
         "dtnd": {
-            "host": "http://127.0.0.1",
+            "host": "127.0.0.1",
             "node_id": f"dtn://{HOSTNAME}/",
             "port": 3000,
             "rest_path": "",

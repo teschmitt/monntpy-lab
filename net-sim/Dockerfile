@@ -29,13 +29,13 @@ ENV USER root
 
 # --------------------------- moNNT.py Installation ---------------------------
 
-RUN pip install poetry==1.1.13 && \
-    mkdir -p /app/assets && \
-    mkdir -p /app/moNNT.py && \
-    cd /app/moNNT.py && \
-    git clone https://github.com/teschmitt/moNNT.py.git . && \
-    git checkout 878a354 && \
-    poetry install --no-interaction --no-ansi --no-root --no-dev
+RUN pip install poetry==1.2.2                               && \
+    mkdir -p /app/assets                                    && \
+    mkdir -p /app/moNNT.py                                  && \
+    cd /app/moNNT.py                                        && \
+    git clone https://github.com/teschmitt/moNNT.py.git .   && \
+    git checkout v0.5.0                                     && \
+    poetry install --no-interaction --no-ansi --no-root --only main
 
 COPY ./assets/* /app/assets/
 
